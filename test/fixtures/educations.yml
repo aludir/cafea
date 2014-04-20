@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  school: MyString
+  start_date: 2014-04-20
+  end_date: 2014-04-20
+  field: MyString
+  grade: MyString
+  activities: MyString
+  description: MyString
+
+two:
+  user_id: 
+  school: MyString
+  start_date: 2014-04-20
+  end_date: 2014-04-20
+  field: MyString
+  grade: MyString
+  activities: MyString
+  description: MyString

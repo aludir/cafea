@@ -15,7 +15,7 @@ gem 'devise'
 # Use erd for visualising the database structure
 gem 'rails-erd'
 
-# Use Uglifier as compressor for JavaScript assets
+Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views

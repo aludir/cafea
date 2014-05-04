@@ -1,0 +1,6 @@
+<%= link_to 'Edit your profile', current_user%>
+
+<% @users.each do |t|%>
+  <%= t.name %>
+  <%= t.surname %>
+<%end%>

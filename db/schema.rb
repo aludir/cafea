@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420204031) do
+ActiveRecord::Schema.define(version: 20140504173111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 20140420204031) do
   create_table "announcements_tags", id: false, force: true do |t|
     t.integer "announcement_id"
     t.integer "tag_id"
+  end
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.string   "body"
+    t.integer  "announcement_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "educations", force: true do |t|
@@ -72,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140420204031) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "field_of_work"
   end
 
   create_table "interests", force: true do |t|
@@ -80,6 +89,11 @@ ActiveRecord::Schema.define(version: 20140420204031) do
     t.integer  "initiator"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "interests_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "interest_id"
   end
 
   create_table "languages", force: true do |t|
@@ -94,6 +108,11 @@ ActiveRecord::Schema.define(version: 20140420204031) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "lbgs_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "lbg_id"
   end
 
   create_table "phones", force: true do |t|
@@ -119,16 +138,6 @@ ActiveRecord::Schema.define(version: 20140420204031) do
     t.integer  "gender"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "users_interests", id: false, force: true do |t|
-    t.integer "user_id"
-    t.integer "interest_id"
-  end
-
-  create_table "users_lbgs", id: false, force: true do |t|
-    t.integer "user_id"
-    t.integer "lbg_id"
   end
 
 end

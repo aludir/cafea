@@ -1,3 +1,4 @@
+<%= link_to "Sign-out", destroy_user_session_path, method: :delete %>
 <h1>Listing users</h1>
 
 <table>
@@ -12,8 +13,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= link_to user.surname, user %></td>
+        <td><%= link_to user.name+' '+user.surname, user %></td>
         <% if user.id == current_user.id %>
           <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <%end%>

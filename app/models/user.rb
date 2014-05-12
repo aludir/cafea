@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   has_many :comments
   has_and_belongs_to_many :lbgs
   has_and_belongs_to_many :interests
+  validates :uuid, uniqueness: true
 end

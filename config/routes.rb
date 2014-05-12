@@ -1,5 +1,5 @@
 AluDir::Application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {registrations: "users/registrations"}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -16,7 +16,7 @@ AluDir::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :users
+  resources :users, only: [:index, :show]
 
   # Example resource route with options:
   #   resources :products do

@@ -12,6 +12,12 @@ gem 'sass-rails', '~> 4.0.0'
 #Use Device for user authentication
 gem 'devise'
 
+# Use twitter bootstrap css and js
+gem 'twitter-bootstrap-rails'
+
+# Using rails_12factor gem because heroku says so
+gem 'rails_12factor'
+
 # Use erd for visualising the database structure
 gem 'rails-erd'
 

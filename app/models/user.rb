@@ -14,4 +14,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :lbgs
   has_and_belongs_to_many :interests
   validates :uuid, uniqueness: true
+  validates :name, presence: true
+  validates :surname, presence: true
+  validates :birth_date, presence: true
 end

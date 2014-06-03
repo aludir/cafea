@@ -22,4 +22,11 @@
   </tbody>
 </table>
 
+<div class="container" ng-controller="IndexCtrl">
+  <div class="row" ng-repeat="post in data.posts">
+    <h2>{{post.title}}</h2>
+    <p>{{post.contents}}</p>
+  </div>
+</div>
+
 <br>

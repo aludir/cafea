@@ -12,5 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+
+//= require underscore-min
+//= require angular.min
+//= require users
+
+//= require_tree ./services/global
+//= require_tree ./services/users
+//= require_tree ./filters/global
+//= require_tree ./filters/users
+//= require_tree ./controllers/global
+//= require_tree ./controllers/users
+//= require_tree ./directives/global
+//= require_tree ./directives/users
+

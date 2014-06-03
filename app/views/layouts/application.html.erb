@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <head>
   <title>AluDir</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application", controller_name %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,8 +11,9 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-
-<%= yield %>
+<div ng-view>
+  <%= yield %>
+</div>
 
 </body>
 </html>

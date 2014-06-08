@@ -16,6 +16,9 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass'
 
+# Use angular.js front-end frameword
+gem 'angularjs-rails'
+
 # Using rails_12factor gem because heroku says so
 gem 'rails_12factor'
 

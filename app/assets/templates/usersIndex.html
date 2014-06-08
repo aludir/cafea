@@ -1,0 +1,4 @@
+<h1 class="text-center">Listing users</h1>
+<div class="row" ng-repeat="user in data.users">
+    <p><a ng-click="viewUser($index)" href="">{{ user.name }} {{ user.surname }}</a></p>
+</div>

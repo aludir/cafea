@@ -1,17 +1,22 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  respond_to :json
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    users = User.all
+    
+    respond_with(users) do |format|
+      format.json{render :json => users.as_json}
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(:first, :conditions => ["uuid = ? ",params[:id]])
+   @user = User.find(:first, :conditions => ["uuid = ? ",params[:id]])
   end
 
   private

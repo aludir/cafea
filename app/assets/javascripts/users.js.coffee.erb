@@ -10,12 +10,12 @@ window.Aludir = angular.module('Aludir', ['ngRoute'])
 window.Aludir.config(['$routeProvider', ($routeProvider) ->
   $routeProvider
     .when '/user/:userId',
-      templateUrl: '/assets/userView.html'
+      templateUrl: "<%= asset_path '/assets/userView.html' %>"
       controller: 'ViewUserCtrl'
     .when '/user/:userId/edit',
-      templateUrl: '/assets/usersEdit.html'
+      templateUrl: "<%= asset_path '/assets/usersEdit.html' %>"
       controller: 'EditUserCtrl'
     .otherwise
-      templateUrl: '/assets/usersIndex.html'
+      templateUrl: "<%= asset_path '/assets/usersIndex.html' %>"
       controller: 'IndexUsersCtrl'
 ])

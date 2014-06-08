@@ -6,11 +6,7 @@ class ApplicationController < ActionController::Base
   
   private
   def after_sign_in_path_for(resource)
-    if current_user.name.nil?
-      edit_user_registration_path(current_user)
-    else
-      users_path
-    end
+    root_path
   end
   
   protected

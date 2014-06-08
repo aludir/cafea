@@ -30,7 +30,7 @@ AluDir::Application.configure do
   config.assets.compile = false
   
   # Precompile the angular related controllers
-  config.assets.precompile += %w( users.js)
+  # config.assets.precompile += %w( users.js)
 
   # Generate digests for assets URLs.
   config.assets.digest = true

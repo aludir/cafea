@@ -22,6 +22,5 @@ module AluDir
     
     config.assets.paths << "#{Rails.root}/app/assets/templates"
     
-    config.serve_static_assets = true
   end
 end

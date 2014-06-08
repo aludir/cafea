@@ -18,6 +18,7 @@
 //= require angular.min
 //= require angular-route.min
 //= require users
+//= require main
 
 // require_tree ./services
 // require_tree ./filters

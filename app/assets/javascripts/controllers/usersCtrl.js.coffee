@@ -1,6 +1,7 @@
 # app/assets/javascripts/angular/controllers/usersCtrl.js.coffee
 
-@IndexUsersCtrl = ($scope, $location, $http) ->
+
+Aludir.controller 'IndexUsersCtrl',[ '$scope', '$location', '$http', ($scope, $location, $http) ->
   $scope.users = [{name: 'Loading users...', surname: ''}]
   loadUsers = ->
     $http.get('./users.json').success((data)->
@@ -11,9 +12,9 @@
       )
   loadUsers()
   $scope.viewUser = (userId) ->
-    $location.url('/user/'+userId)
+    $location.url('/user/'+userId)]
     
-@ViewUserCtrl = ($scope, $location, $routeParams, $http) ->
+Aludir.controller 'ViewUserCtrl', [ '$scope', '$location','$routeParams','$http', ($scope, $location, $routeParams, $http) ->
   $scope.user = [{name: 'Loading user data...', surname: ''}]
   loadUser = (id)->
     $http.get('./users/'+id+'.json').success((data)->
@@ -24,4 +25,4 @@
       )
   loadUser($routeParams.userId)
   $scope.goBack = ->
-    $location.url('/')
+    $location.url('/')]

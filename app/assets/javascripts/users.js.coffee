@@ -10,9 +10,12 @@ Aludir = angular.module('Aludir', ['ngRoute'])
 Aludir.config(['$routeProvider', ($routeProvider) ->
   $routeProvider
     .when '/user/:userId',
+      templateUrl: '/assets/userView.html'
+      controller: 'ViewUserCtrl'
+    .when '/user/:userId/edit',
       templateUrl: '/assets/usersEdit.html'
-      controller: 'EditCtrl'
+      controller: 'EditUserCtrl'
     .otherwise
       templateUrl: '/assets/usersIndex.html'
-      controller: 'IndexCtrl'
+      controller: 'IndexUsersCtrl'
 ])

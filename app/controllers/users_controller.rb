@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   respond_to :json
 
   # GET /users
@@ -9,13 +9,16 @@ class UsersController < ApplicationController
     users = User.all
     
     respond_with(users) do |format|
-      format.json{render :json => users.as_json(:only => [:name,:surname])}
+      format.json{render :json => users.as_json(:only => [:name,:surname,:uuid])}
     end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    respond_with(@user) do |format|
+      format.json{render :json => @user.as_json(:except => [:id,:created_at,:updated_at])}
+    end
   end
 
   private

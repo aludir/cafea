@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     users = User.all
     
     respond_with(users) do |format|
-      format.json{render :json => users.as_json}
+      format.json{render :json => users.as_json(:only => [:name,:surname])}
     end
   end
 

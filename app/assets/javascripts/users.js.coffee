@@ -5,9 +5,9 @@
 #= require_self
 
 # Creates new Angular module called 'Aludir'
-window.Aludir = angular.module('Aludir', ['ngRoute'])
+@Aludir = angular.module('Aludir', ['ngRoute'])
 
-window.Aludir.config(['$routeProvider', ($routeProvider) ->
+@Aludir.config(['$routeProvider', ($routeProvider) ->
   $routeProvider
     .when '/user/:userId',
       templateUrl: '/templates/userView.html'

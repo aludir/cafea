@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Defining the version of ruby
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 

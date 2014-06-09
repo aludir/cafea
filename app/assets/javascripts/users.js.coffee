@@ -9,9 +9,10 @@
 
 # Reading the authenticity_tag and passing it in all requests
 # https://shellycloud.com/blog/2013/10/how-to-integrate-angularjs-with-rails-4
-@Aludir.config ($httpProvider) ->
+@Aludir.config(['$httpProvider', ($httpProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
+])
 
 @Aludir.config(['$routeProvider', ($routeProvider) ->
   $routeProvider

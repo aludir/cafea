@@ -5,7 +5,7 @@
 #= require_self
 
 # Creates new Angular module called 'Aludir'
-@Aludir = angular.module('Aludir', ['ngRoute'])
+@Aludir = angular.module('Aludir', ['ngRoute', 'xeditable'])
 
 @Aludir.config(['$routeProvider', ($routeProvider) ->
   $routeProvider

@@ -17,6 +17,7 @@
 //= require underscore-min
 //= require angular.min
 //= require angular-route.min
+//= require xeditable.min
 //= require users
 //= require main
 

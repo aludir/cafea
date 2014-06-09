@@ -13,8 +13,8 @@
       templateUrl: '/templates/userView.html'
       controller: 'ViewUserCtrl'
     .when '/user/:userId/edit',
-      templateUrl: '/templates/usersEdit.html'
-      controller: 'EditUserCtrl'
+      templateUrl: '/templates/userEdit.html'
+      controller: 'ViewUserCtrl'
     .otherwise
       templateUrl: '/templates/usersIndex.html'
       controller: 'IndexUsersCtrl'

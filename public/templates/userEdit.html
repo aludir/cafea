@@ -1,0 +1,49 @@
+<h1 class="text-center">Viewing User</h1>
+
+Full name: {{ user.name }} {{ user.surname }}
+<div ng-controller="EditableFormCtrl">
+  <form editable-form name="editableForm" onbeforesave="saveUser()">
+    <div>
+      <span class="title">E-mail: </span>
+      <span editable-email="user.email" e-name="email" e-required>{{ user.email || 'empty' }}</span>
+    </div>
+    <div>
+      <span class="title">Nickname: </span>
+      <span editable-text="user.nickname" e-name="nickname"> {{user.nickname || "empty"}}</span>
+    </div>
+    <div>
+      <span class="title">Gender: </span>
+      <span editable-select="user.gender" e-name="gender" e-required e-ng-options="s.value as s.text for s in genders ">
+        {{ (genders | filter:{value: user.gender})[0].text || 'Not set' }}</span>
+    </div>
+    <div>
+      <span class="title">Birthdate: </span>
+      <span editable-date="user.birth_date" e-name="birth_date" e-required>{{user.birth_date || "empty"}}</span>
+    </div>
+    <!-- <div>
+      <span class="title">LBG:</span>
+      <span editable-text="user.lbg" e-typeahead="lbg for lbg in lbg | filter:$viewValue | limitTo:8">{{user.lbg || "empty"}}
+    </div>-->
+    <div> 
+      <span ng-show="editableForm.$visible">
+        <span editable-text="user.current_password" e-name="current_password" e-required placeholder="Password required to save changes">{{user.password}}</span>
+      </span>
+    </div>
+    <div class="buttons">
+      <button type="button" class="btn btn-default" ng-click="goBack()">Back</a>
+      <!-- button to show form -->
+      <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+        Edit
+      </button>
+      <!-- buttons to submit / cancel form -->
+      <span ng-show="editableForm.$visible">
+        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+          Save
+        </button>
+        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+          Cancel
+        </button>
+      </span>
+    </div>
+  </form>
+</div>

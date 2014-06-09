@@ -1,1 +1,3 @@
-<div class="container" ng-view>
+<% if user_signed_in? %>
+  <div class="container" ng-view>
+<%end%>

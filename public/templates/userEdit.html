@@ -1,8 +1,9 @@
 <h1 class="text-center">Viewing User</h1>
 
-Full name: {{ user.name }} {{ user.surname }}
+<span class="title">Full name: </span>
+<span>{{ user.name }} {{ user.surname }}</span>
 <div ng-controller="EditableFormCtrl">
-  <form editable-form name="editableForm" onbeforesave="saveUser()">
+  <form editable-form name="editableForm" onaftersave="updateUser()">
     <div>
       <span class="title">E-mail: </span>
       <span editable-email="user.email" e-name="email" e-required>{{ user.email || 'empty' }}</span>
@@ -26,7 +27,8 @@ Full name: {{ user.name }} {{ user.surname }}
     </div>-->
     <div> 
       <span ng-show="editableForm.$visible">
-        <span editable-text="user.current_password" e-name="current_password" e-required placeholder="Password required to save changes">{{user.password}}</span>
+        <span class="title">Please enter your password to save changes: </span>
+        <span editable-text="user.current_password" e-name="current_password" e-required >{{user.password}}</span>
       </span>
     </div>
     <div class="buttons">

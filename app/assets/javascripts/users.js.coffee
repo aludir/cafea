@@ -7,6 +7,8 @@
 # Creates new Angular module called 'Aludir'
 @Aludir = angular.module('Aludir', ['ngRoute', 'xeditable'])
 
+# Reading the authenticity_tag and passing it in all requests
+# https://shellycloud.com/blog/2013/10/how-to-integrate-angularjs-with-rails-4
 @Aludir.config ($httpProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken

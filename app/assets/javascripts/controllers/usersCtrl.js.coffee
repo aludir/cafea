@@ -31,7 +31,6 @@ Aludir.controller 'EditableFormCtrl', ['$scope', '$filter', '$http', ($scope, $f
   $scope.genders = [
     {value: 1, text: 'male'},
     {value: 2, text: 'female'}
-  ]; 
-  $scope.lbgs = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-  $scope.saveUser = () -> 
-    $http.put('/users', $scope.user)]
+  ];
+  $scope.updateUser = () ->
+    $http.put('./users', $scope.user)]

@@ -19,7 +19,7 @@
     </div>
     <div>
       <span class="title">Birthdate: </span>
-      <span editable-date="user.birth_date" e-name="birth_date" e-required>{{user.birth_date || "empty"}}</span>
+      <span editable-bsdate="user.birth_date" e-datepicker-popup="dd-MMMM-yyyy" e-name="birth_date" e-required>{{user.birth_date || "empty"}}</span>
     </div>
     <!-- <div>
       <span class="title">LBG:</span>
@@ -28,7 +28,7 @@
     <div> 
       <span ng-show="editableForm.$visible">
         <span class="title">Please enter your password to save changes: </span>
-        <span editable-text="user.current_password" e-name="current_password" e-required >{{user.password}}</span>
+        <input type="password" name="current_password" required="required" ng-model="$data" >{{user.password}}</span>
       </span>
     </div>
     <div class="buttons">

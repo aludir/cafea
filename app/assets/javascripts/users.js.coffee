@@ -5,7 +5,7 @@
 #= require_self
 
 # Creates new Angular module called 'Aludir'
-@Aludir = angular.module('Aludir', ['ngRoute', 'xeditable'])
+@Aludir = angular.module('Aludir', ['ngRoute', 'xeditable', 'ui.bootstrap'])
 
 # Reading the authenticity_tag and passing it in all requests
 # https://shellycloud.com/blog/2013/10/how-to-integrate-angularjs-with-rails-4

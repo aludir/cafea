@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 
+//= require angular.min
 //= require bootstrap.min 
 //= require ui-bootstrap.min
 //= require underscore-min
-//= require angular.min
 //= require angular-route.min
 //= require xeditable.min
 //= require users

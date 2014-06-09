@@ -7,6 +7,10 @@
 # Creates new Angular module called 'Aludir'
 @Aludir = angular.module('Aludir', ['ngRoute', 'xeditable'])
 
+@Aludir.config ($httpProvider) ->
+  authToken = $("meta[name=\"csrf-token\"]").attr("content")
+  $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
+
 @Aludir.config(['$routeProvider', ($routeProvider) ->
   $routeProvider
     .when '/user/:userId',

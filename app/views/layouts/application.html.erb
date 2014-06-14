@@ -13,6 +13,7 @@
     
     <% if user_signed_in? %>
     <li><%= link_to "Profile", "/#/user/#{current_user.uuid}/edit" %></li>
+    <li><%= link_to "Announcements", '/#/announcements' %></li>
     <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
   <% else %>
     <li><%= link_to "Sign in", new_user_session_path%></li>  

@@ -1,0 +1,17 @@
+<h1 class="text-center">Announcements</h1>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Tag</th>
+      <th>User</th>
+    </tr>
+    <tr ng-repeat="announcement in data.announcements">
+        <td><a ng-click="viewAnnouncement(announcement.id)" href=''>{{ announcement.title }}</a></td>
+        <td> {{ announcement.created_at }}</td>
+        <td>{{ announcement.tag }}</td>
+        <td><a href="/#/user/{{ announcement.user_id }}">{{ announcement.user_id }}</a></td>
+    </tr>
+  </table>
+</div>

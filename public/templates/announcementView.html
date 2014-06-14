@@ -1,0 +1,6 @@
+<h1 class="text-center">Viewing announcement</h1>
+<p>{{ data.announcements[findId()-1].title }} </p>
+Date: {{ data.announcements[findId()-1].created_at}}</br>
+Tag: {{data.announcements[findId()-1].tag }}</br>
+{{ data.announcements[findId()-1].text}}</br>
+<button type="button" class="btn btn-default" ng-click="goBack()">Back</a>

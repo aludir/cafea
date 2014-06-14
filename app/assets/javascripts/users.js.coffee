@@ -22,6 +22,12 @@
     .when '/user/:userId/edit',
       templateUrl: '/templates/userEdit.html'
       controller: 'ViewUserCtrl'
+    .when '/announcements',
+      templateUrl: '/templates/announcementsIndex.html'
+      controller: 'IndexAnnouncementsCtrl'
+    .when '/announcements/:announcementId',
+      templateUrl: '/templates/announcementView.html'
+      controller: 'IndexAnnouncementsCtrl'
     .otherwise
       templateUrl: '/templates/usersIndex.html'
       controller: 'IndexUsersCtrl'

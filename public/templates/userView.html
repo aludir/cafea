@@ -1,7 +1,34 @@
 <h1 class="text-center">Viewing User</h1>
-<p>{{ user.name }} {{ user.surname }}</p>
-E-mail: <a href="mailto:{{ user.email }}" >{{ user.email }}</a></br>
-Nickname: {{ user.nickname}}</br>
-Gender: {{ user.gender }}</br>
-Birthdate: {{ user.birth_date }}</br>
+
+<ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a data-target="#personal" data-toggle="tab">Personal Info</a></li>
+  <li><a data-target="#professional" data-toggle="tab">Professional</a></li>
+  <li><a data-target="#education" data-toggle="tab">Education</a></li>
+  <li><a data-target="#BEST" data-toggle="tab">BEST related</a></li>
+  <li><a data-target="#interests" data-toggle="tab">Interests</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="personal">  
+    <p>{{ user.name }} {{ user.surname }}</p>
+    E-mail: <a href="mailto:{{ user.email }}" >{{ user.email }}</a></br>
+    Nickname: {{ user.nickname}}</br>
+    Gender: {{ user.gender }}</br>
+    Birthdate: {{ user.birth_date }}</br>
+  </div>
+  <div class="tab-pane" id="professional">
+    Professional info will appear here
+  </div>
+  <div class="tab-pane" id="education">
+    Information about education of the person will appear here
+  </div>
+  <div class="tab-pane" id="BEST">
+    All BEST related info will appear here
+  </div>
+  <div class="tab-pane" id="interests">
+    This is the place for the interests of the person
+  </div>
+</div>
+
 <button type="button" class="btn btn-default" ng-click="goBack()">Back</a>
+

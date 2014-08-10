@@ -7,24 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <ul class="nav nav-tabs">
-  <li><%= link_to "Home", root_path%></li>
-    
-    <% if user_signed_in? %>
-    <li><%= link_to "Profile", "/#/user/#{current_user.uuid}/edit" %></li>
-    <li>
-      <%= link_to '/#/announcements' do %>
-        <div ng-controller="IndexAnnouncementsCtrl">
-          Announcements <span class="badge">{{ data.announcements.length }}</span>
-        </div>
-      <%end%>
-    </li>
-    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-  <% else %>
-    <li><%= link_to "Sign in", new_user_session_path%></li>  
-  <% end%>
-</ul>
+
+<%= render "layouts/navbar" %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

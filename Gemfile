@@ -15,6 +15,9 @@ gem 'devise'
 # Use twitter bootstrap css and js
 gem 'twitter-bootstrap-rails'
 
+# Use bootstrap
+gem 'bootstrap-sass'
+
 # Using rails_12factor gem because heroku says so
 gem 'rails_12factor'
 

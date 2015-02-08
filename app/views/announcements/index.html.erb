@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <th>Announcer</th>
+      <th>Date</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+
+  <tbody> 
+    <% @announcements.each do |announcement| %>
+      <tr>
+        <td><%= link_to announcement.user.name+' '+announcement.user.surname, "/users/#{announcement.user.uuid}" %></td>
+        <td><%= announcement.created_at %></td>
+        <td><%= link_to announcement.title, announcement_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -11,9 +11,11 @@
     <% @announcements.each do |announcement| %>
       <tr>
         <td><%= link_to announcement.user.name+' '+announcement.user.surname, "/users/#{announcement.user.uuid}" %></td>
-        <td><%= announcement.created_at %></td>
-        <td><%= link_to announcement.title, announcement_path %></td>
+        <td><%= announcement.created_at.strftime("%Y-%M-%d") %></td>
+        <td><%= link_to announcement.title, announcement_path(announcement) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'Announce!', new_announcement_path, class: 'btn btn-success'%>

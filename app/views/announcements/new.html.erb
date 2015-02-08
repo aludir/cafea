@@ -1,0 +1,13 @@
+<div class="row">
+  <%= form_for @announcement do |f| %>
+    <%= label_tag(:title, 'Title')%><br>
+    <%= f.text_field :title, required: 'required' %>
+    <br>
+
+    <%= label_tag(:body, 'Message')%><br>
+    <%= f.text_field :body, required: 'required' %>
+	
+	<br>
+	<%= f.submit "Submit!", class: "btn btn-success" %>
+  <% end %>
+</div>

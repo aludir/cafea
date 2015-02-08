@@ -1,0 +1,7 @@
+<h1><%= @announcement.title %></h1>
+
+By: <%= link_to @user.name+' '+@user.surname, user_path(@user) %>
+<br>
+Posted on: <%= @announcement.created_at.strftime("%Y-%M-%d") %>
+<br>
+<%= @announcement.body %>

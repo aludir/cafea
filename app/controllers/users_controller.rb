@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(:first, :conditions => ["uuid = ? ",params[:id]])
+    @user = User.find(:first, :conditions => ["uuid = ? ", params[:id]])
   end
 
   private
@@ -22,6 +22,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :surname, :birth_date,:old_surname, :nickname)
+      params.require(:user).permit(:name, :surname, :birth_date, :old_surname, :nickname)
     end
 end

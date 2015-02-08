@@ -1,21 +1,22 @@
-<table>
-  <thead>
-    <tr>
-      <th>Announcer</th>
-      <th>Date</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-
-  <tbody> 
-    <% @announcements.each do |announcement| %>
+<div class="table-responsive">
+  <table class='table table-hover'>
+    <thead>
       <tr>
-        <td><%= link_to announcement.user.name+' '+announcement.user.surname, "/users/#{announcement.user.uuid}" %></td>
-        <td><%= announcement.created_at.strftime("%Y-%M-%d") %></td>
-        <td><%= link_to announcement.title, announcement_path(announcement) %></td>
+        <th>Title</th>
+        <th>Announcer</th>
+        <th>Date</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<%= link_to 'Announce!', new_announcement_path, class: 'btn btn-success'%>
+    <tbody> 
+      <% @announcements.each do |announcement| %>
+        <tr>
+          <td><%= link_to announcement.title, announcement_path(announcement) %></td>
+          <td><%= link_to announcement.user.name+' '+announcement.user.surname, "/users/#{announcement.user.uuid}" %></td>
+          <td><%= announcement.created_at.strftime("%Y-%M-%d") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<center><%= link_to 'Announce too!', new_announcement_path, class: 'btn btn-success'%></center>

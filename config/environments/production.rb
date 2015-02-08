@@ -64,6 +64,18 @@ AluDir::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { host: 'aludir.net' }
+  
+  config.action_mailer.delivery_method = :smtp  
+  config.action_mailer.smtp_settings = {
+    address: ENV['mailer_server'],
+    port: ENV['mailer_port'],
+    domain: ENV['mailer_domain'],
+    tls: true,
+    authentication: :login,
+    user_name: ENV['mailer_user'],
+    password: ENV['mailer_pass']
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).

@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+ <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -13,23 +13,23 @@
   
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :surname %><br>
-    <%= f.text_field :surname %>
+    <%= f.text_field :surname, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :old_surname %><br>
-    <%= f.text_field :old_surname %>
+    <%= f.text_field :old_surname, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :nickname %><br>
-    <%= f.text_field :nickname %>
+    <%= f.text_field :nickname, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :birth_date %><br>
-    <%= f.date_select("birth_date", start_year: 1940)%>
+    <%= f.date_select("birth_date", start_year: 1940), class: 'form-control' %>
   </div>
 
   <div class="actions">

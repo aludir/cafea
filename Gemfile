@@ -18,6 +18,9 @@ gem 'twitter-bootstrap-rails'
 # Use bootstrap
 gem 'bootstrap-sass'
 
+# Using twitter's typeahead gem
+gem 'twitter-typeahead-rails'
+
 # Using rails_12factor gem because heroku says so
 gem 'rails_12factor'
 

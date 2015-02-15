@@ -1,3 +1,31 @@
+<script>
+var tags = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  limit: 100,
+  prefetch: '/tags.json'
+});
+ 
+// kicks off the loading/processing of `local` and `prefetch`
+tags.clearPrefetchCache();
+tags.initialize();
+ 
+// passing in `null` for the `options` arguments will result in the default
+// options being used
+$('#prefetch .typeahead').typeahead(null, {
+  displayKey: 'name',
+  // `ttAdapter` wraps the suggestion engine in an adapter that
+  // is compatible with the typeahead jQuery plugin
+  source: tags.ttAdapter(),
+  templates: {
+    empty: ['<div class="empty-message">',
+      'No such tag exists.',
+      'But feel free to create it!',
+      '</div>'].join('\n')
+    }
+  }); 
+</script>
+
 <div class="row">
   <%= form_for @announcement do |f| %>
     <%= label_tag(:title, 'Title')%><br>
@@ -10,4 +38,8 @@
 	<br>
 	<%= f.submit "Submit!", class: "btn btn-success" %>
   <% end %>
+
+  <div id="prefetch">
+    <input class="typeahead" type="text" placeholder="Tags">
+  </div> 
 </div>

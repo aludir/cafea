@@ -5,6 +5,10 @@ class AnnouncementsController < ApplicationController
   	@announcements = Announcement.all
   end
 
+  def edit
+    @announcement = Announcement.find(params[:id])
+  end
+
   def new
   	@announcement = Announcement.new
   end
@@ -18,5 +22,20 @@ class AnnouncementsController < ApplicationController
   	@announcement.save!
 
   	redirect_to announcements_path
+  end
+
+  def update
+    @announcement = Announcement.find(params[:id])
+ 
+    if @announcement.update(announcement_params)
+      redirect_to @announcement
+    else
+      render 'edit'
+    end
+  end
+
+  private
+  def announcement_params
+    params.require(:announcement).permit(:id, :title, :body, :tags)
   end
 end

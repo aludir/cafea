@@ -1,10 +1,11 @@
-<div class="table-responsive">
+  <div class="table-responsive">
   <table class='table table-hover'>
     <thead>
       <tr>
         <th>Title</th>
         <th>Announcer</th>
         <th>Date</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -14,6 +15,7 @@
           <td><%= link_to announcement.title, announcement_path(announcement) %></td>
           <td><%= link_to announcement.user.name+' '+announcement.user.surname, "/users/#{announcement.user.uuid}" %></td>
           <td><%= announcement.created_at.strftime("%Y-%M-%d") %></td>
+          <td><% if current_user.uuid == announcement.user.uuid %><%= link_to 'Edit', edit_announcement_path(announcement) %><%end%></td>
         </tr>
       <% end %>
     </tbody>

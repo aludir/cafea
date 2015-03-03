@@ -3,6 +3,7 @@ class AnnouncementsController < ApplicationController
 
   def index
   	@announcements = Announcement.all
+    @self_announcements = Announcement.find_all_by_user_id(current_user.id)
   end
 
   def edit
@@ -13,8 +14,15 @@ class AnnouncementsController < ApplicationController
   	@announcement = Announcement.new
   end
   def show
-  	@announcement = Announcement.find_by_id(params[:id])
+  	@announcement = Announcement.find(params[:id])
   	@user = @announcement.user
+  end
+
+  def destroy
+    @announcement = Announcement.find(params[:id])
+    @announcement.destroy
+
+    redirect_to announcements_path
   end
 
   def create

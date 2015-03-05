@@ -1,8 +1,9 @@
 class AnnouncementsController < ApplicationController
   before_action :authenticate_user!
+  helper_method :sort_column, :sort_direction
 
   def index
-  	@announcements = Announcement.all
+  	@announcements = Announcement.order(sort_column + ' ' + sort_direction)
     @self_announcements = Announcement.find_all_by_user_id(current_user.id)
   end
 
@@ -45,5 +46,13 @@ class AnnouncementsController < ApplicationController
   private
   def announcement_params
     params.require(:announcement).permit(:id, :title, :body, :tags)
+  end
+  
+  def sort_column
+    Announcement.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
   end
 end

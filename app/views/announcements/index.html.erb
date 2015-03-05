@@ -3,9 +3,9 @@
   <table class='table table-hover'>
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Announcer</th>
-        <th>Date</th>
+        <th><%= sortable 'title' %></th>
+        <th><%= sortable 'user_id', 'Announcer' %></th>
+        <th><%= sortable 'created_at', 'Date'%></th>
         <th></th>
       </tr>
     </thead>

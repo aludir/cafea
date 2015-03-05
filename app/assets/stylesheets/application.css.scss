@@ -12,3 +12,17 @@
  *= require bootstrap.min
  *= require_tree .
  */
+
+
+th .current {
+  padding-right: 30px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+th .asc { 
+  background-image: url(/images/Arrow-Up-icon.png); 
+}
+
+th .desc { 
+  background-image: url(/images/Arrow-Down-icon.png); 
+}

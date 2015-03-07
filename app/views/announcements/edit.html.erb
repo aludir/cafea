@@ -27,20 +27,5 @@ $('#prefetch .typeahead').typeahead(null, {
 </script>
 
 <div class="row">
-  <%= form_for @announcement do |f| %>
-    <%= label_tag(:title, 'Title')%><br>
-    <%= f.text_field :title, required: 'required' %>
-    <br>
-
-    <%= label_tag(:body, 'Message')%><br>
-    <%= f.text_field :body, required: 'required' %>
-	
-	<br>
-  <div id="prefetch">
-    <input class="typeahead" type="text" placeholder="Tags">
-  </div> 
-
-	<%= f.submit "Save!", class: "btn btn-success" %>
-  <% end %>
-
+  <%= render 'form', dom_id: "edit_announcement"%>
 </div>

@@ -39,7 +39,8 @@ class AnnouncementsController < ApplicationController
 
   def update
     @announcement = Announcement.find(params[:id])
- 
+    @tags = @announcement.tags.build(tag_params)
+    
     if @announcement.update(announcement_params)
       redirect_to @announcement
     else

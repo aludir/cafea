@@ -2,6 +2,8 @@
 
 By: <%= link_to @user.name+' '+@user.surname, user_path(@user) %>
 <br>
+Tags: <%= @announcement.tags.map {|k| k[:name]}.join(', ') %>
+<br>
 Posted on: <%= @announcement.created_at.strftime("%Y-%M-%d") %>
 <br>
 <%= @announcement.body %>

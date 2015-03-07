@@ -14,6 +14,7 @@ class AnnouncementsController < ApplicationController
   def new
   	@announcement = Announcement.new
   end
+  
   def show
   	@announcement = Announcement.find(params[:id])
   	@user = @announcement.user
@@ -27,10 +28,13 @@ class AnnouncementsController < ApplicationController
   end
 
   def create
-  	@announcement = Announcement.new(user_id: current_user.id, title: params[:announcement][:title], body: params[:announcement][:body])
-  	@announcement.save!
-
-  	redirect_to announcements_path
+  	@announcement = Announcement.new(announcement_params)
+  	@tags = @announcement.tags.build(tag_params)
+  	if @announcement.save!
+    	redirect_to announcements_path
+   else
+     render_to new_announcement_path
+   end
   end
 
   def update
@@ -45,7 +49,11 @@ class AnnouncementsController < ApplicationController
 
   private
   def announcement_params
-    params.require(:announcement).permit(:id, :title, :body, :tags)
+    params.require(:announcement).permit(:user_id, :title, :body)
+  end
+  
+  def tag_params
+    params.require(:tags).permit(:name)
   end
   
   def sort_column

@@ -5,4 +5,9 @@
       <%= submit_tag "Search", name: 'nil' %>
     </div>
   <% end %>
+  <ul>
+  <% @users.each do |user| %>
+    <li><%= user.name  %> (<%= user.id %>)</li>
+  <% end %>
+  </ul>
 </div>

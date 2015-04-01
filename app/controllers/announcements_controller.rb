@@ -18,6 +18,7 @@ class AnnouncementsController < ApplicationController
   def show
   	@announcement = Announcement.find(params[:id])
   	@user = @announcement.user
+  	@comment = Comment.new
   end
 
   def destroy
@@ -25,6 +26,15 @@ class AnnouncementsController < ApplicationController
     @announcement.destroy
 
     redirect_to announcements_path
+  end
+  
+  def add_comment
+    @comment = Comment.new(comment_params)
+    if @comment.save!
+      redirect_to announcements_path
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -51,6 +61,10 @@ class AnnouncementsController < ApplicationController
   private
   def announcement_params
     params.require(:announcement).permit(:user_id, :title, :body)
+  end
+  
+  def comment_params
+    params.require(:comment).permit(:user_id, :body, :announcement_id)
   end
   
   def tag_params

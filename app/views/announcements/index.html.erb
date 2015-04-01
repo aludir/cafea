@@ -5,8 +5,9 @@
       <tr>
         <th><%= sortable 'title' %></th>
         <th><%= sortable 'user_id', 'Announcer' %></th>
-        <th><%= sortable 'tags'%></th>
+        <th><%= sortable 'tags'%></th	>
         <th><%= sortable 'created_at', 'Date'%></th>
+        <th><%= sortable 'comments', 'Comments' %></th>
       </tr>
     </thead>
 
@@ -16,7 +17,8 @@
           <td><%= link_to announcement.title, announcement_path(announcement) %></td>
           <td><%= link_to announcement.user.name+' '+announcement.user.surname, "/users/#{announcement.user.uuid}" %></td>
           <td><%= announcement.tags.map {|k| k[:name]}.join(', ') %></td>
-          <td><%= announcement.created_at.strftime("%Y-%M-%d") %></td>
+          <td><%= announcement.created_at.strftime("%Y-%m-%d") %></td>
+          <td><%= announcement.comments.count %></td>
         </tr>
       <% end %>
     </tbody>
@@ -35,7 +37,7 @@
           <th>Title</th>
           <th>Tags</th>
           <th>Date</th>
-          <th></th>
+          <th>Comments</th>
           <th></th>
         </tr>
       </thead>
@@ -46,6 +48,7 @@
             <td><%= link_to announcement.title, announcement_path(announcement) %></td>
             <td><%= announcement.tags.map {|k| k[:name]}.join(', ') %></td>
             <td><%= announcement.created_at.strftime("%Y-%M-%d") %></td>
+            <td><%= announcement.comments.count %></td>
             <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
           </tr>
         <% end %>

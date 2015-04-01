@@ -16,6 +16,7 @@
     Old_surname: <%= @user.old_surname %></br>
     Gender: <%= @user.gender%></br>
     Birthdate: <%= @user.birth_date%></br>
+    Joined on: <%= @user.created_at.strftime("%Y-%m-%d") %>
   </div>
   <div class="tab-pane" id="professional">
     <div class="table-responsive">
@@ -117,7 +118,10 @@
     </div>
   </div>
   <div class="tab-pane" id="interests">
-    This is the place for the interests of the person
+    This user is part of the following interests groups:
+    <% @user.interests.each do |i| %>
+    	<%= link_to i.name, interest_path(i) %>
+    <% end %>
   </div>
 </div>
 

@@ -10,4 +10,6 @@ AluDir::Application.routes.draw do
   resources :users, only: [:index, :show]
   resources :announcements
   resources :tags, only: [:index]
+  
+  post 'add_comment', to: 'announcements#add_comment'
 end

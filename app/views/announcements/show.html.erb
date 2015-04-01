@@ -4,6 +4,43 @@ By: <%= link_to @user.name+' '+@user.surname, user_path(@user) %>
 <br>
 Tags: <%= @announcement.tags.map {|k| k[:name]}.join(', ') %>
 <br>
-Posted on: <%= @announcement.created_at.strftime("%Y-%M-%d") %>
+Posted on: <%= @announcement.created_at.strftime("%Y-%m-%d") %>
+<br>
+Last edited at: <%= @announcement.updated_at.strftime("%Y-%m-%d") %>
+<% if @announcement.user.id == current_user.id %>
+  <%= link_to 'edit now?', edit_announcement_path %>
+<% end %>
+
 <br>
 <%= @announcement.body %>
+
+<br>
+
+<h2><i>Comments</i></h2>
+<div class="table-responsive">
+	<table class='table table-hover'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Comment</th>
+            <th>Date posted</th>
+          </tr>
+        </thead>
+        <% @announcement.comments.each do |com| %>
+			<tr>
+				<td><%= link_to com.user.name+' '+com.user.surname, user_path(com.user.uuid) %></td>
+				<td><%= com.body %></td>
+				<td><%= com.created_at.strftime("%Y-%m-%d") %></td>
+			</tr>
+		<%end%>
+	</table>
+</div>
+<hr>
+<h2>New comment</h2>
+
+<%= form_for @comment, url: add_comment_path do |c| %>
+  <%= c.text_area :body, required: 'required', placeholder: 'Comment', cols: 50, rows: 2%><br>
+  <%= c.hidden_field :user_id, {value: current_user.id} %>
+  <%= c.hidden_field :announcement_id, {value: @announcement.id} %>
+  <%= c.submit "Post comment!", class: "btn btn-success" %>
+<% end %>

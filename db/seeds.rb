@@ -9,7 +9,13 @@
 User.delete_all
 User.create(id: '1', email: 'john.doe@email.com', password: 'password',
             password_confirmation: 'password', name: 'John', surname: 'Doe',
-            birth_date: Time.now, uuid: '1234')
+            birth_date: Time.now, uuid: SecureRandom.hex(n=6))
+User.create(id: '2', email: 'tassos@natsakis.com', password: 'password',
+            password_confirmation: 'password', name: 'Tassos', surname: 'Natsakis',
+            birth_date: Time.now-10000, uuid: SecureRandom.hex(n=6))
+User.create(id: '3', email: 'oanasipos@gmail.com', password: 'password',
+            password_confirmation: 'password', name: 'Oana', surname: 'Sipos',
+            birth_date: Time.now-1000000, uuid: SecureRandom.hex(n=6))
 
 Email.delete_all
 Email.create(id: '1', user_id: '1', address: 'john.doe@email.com',

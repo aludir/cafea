@@ -95,7 +95,7 @@
     		<% @user.emails.each do |em| %>
     			<tr>
     				<td><a href='mailto:<%= em.address %>'><%= em.address %></a></td>
-    				<td><%= em.type %></td>
+    				<td><%= em.description %></td>
     			</tr>
     		<% end %>
     	</table>
@@ -111,7 +111,7 @@
     		<% @user.addresses.each do |a| %>
     			<tr>
     				<td><%= a.street+' '+a.number+', '+a.city+', '+a.zip+', '+a.country %></td>
-    				<td><%= a.type %></td>
+    				<td><%= a.description %></td>
     			</tr>
     		<% end %>
     	</table>

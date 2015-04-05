@@ -39,7 +39,7 @@ class AnnouncementsController < ApplicationController
 
   def create
   	@announcement = Announcement.new(announcement_params)
-  	@tags = @announcement.tags.build(tag_params)
+  	@announcement.tag_list.add(tag_params.values.first.split(','))
   	if @announcement.save!
     	redirect_to announcements_path
    else
@@ -49,7 +49,7 @@ class AnnouncementsController < ApplicationController
 
   def update
     @announcement = Announcement.find(params[:id])
-    @tags = @announcement.tags.build(tag_params)
+    @announcement.tag_list.add(tag_params.values.first.split(','))
     
     if @announcement.update(announcement_params)
       redirect_to @announcement
@@ -64,7 +64,7 @@ class AnnouncementsController < ApplicationController
   end
   
   def comment_params
-    params.require(:comment).permit(:user_id, :body, :announcement_id)
+    params.require(:comment).permit(:user_id, :body, :announcement_id, :tag_list => [])
   end
   
   def tag_params

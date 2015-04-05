@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404173713) do
+ActiveRecord::Schema.define(version: 20150404175434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,13 +20,16 @@ ActiveRecord::Schema.define(version: 20150404173713) do
     t.string   "street"
     t.string   "number"
     t.string   "zip"
-    t.string   "city"
-    t.string   "country"
     t.string   "description"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "country_id"
+    t.integer  "city_id"
   end
+
+  add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
+  add_index "addresses", ["country_id"], name: "index_addresses_on_country_id", using: :btree
 
   create_table "announcements", force: true do |t|
     t.integer  "user_id"
@@ -41,10 +44,22 @@ ActiveRecord::Schema.define(version: 20150404173713) do
     t.integer "tag_id"
   end
 
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", force: true do |t|
     t.integer  "user_id"
     t.string   "body"
     t.integer  "announcement_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,14 +89,18 @@ ActiveRecord::Schema.define(version: 20150404173713) do
     t.integer  "user_id"
     t.string   "company"
     t.string   "title"
-    t.string   "location"
     t.date     "start_date"
     t.date     "end_date"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "field_of_work"
+    t.integer  "country_id"
+    t.integer  "city_id"
   end
+
+  add_index "experiences", ["city_id"], name: "index_experiences_on_city_id", using: :btree
+  add_index "experiences", ["country_id"], name: "index_experiences_on_country_id", using: :btree
 
   create_table "interests", force: true do |t|
     t.string   "title"

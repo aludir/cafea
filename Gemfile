@@ -39,6 +39,9 @@ gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Gem for dealing with tags
+gem 'acts-as-taggable-on'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 

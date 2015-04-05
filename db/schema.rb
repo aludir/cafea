@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405085645) do
+ActiveRecord::Schema.define(version: 20150405123746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,6 @@ ActiveRecord::Schema.define(version: 20150405085645) do
     t.integer  "country_id"
     t.integer  "city_id"
   end
-
-  add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
-  add_index "addresses", ["country_id"], name: "index_addresses_on_country_id", using: :btree
 
   create_table "announcements", force: true do |t|
     t.integer  "user_id"
@@ -77,8 +74,6 @@ ActiveRecord::Schema.define(version: 20150405085645) do
     t.integer  "category_id"
   end
 
-  add_index "contacts", ["category_id"], name: "index_contacts_on_category_id", using: :btree
-
   create_table "countries", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -112,10 +107,6 @@ ActiveRecord::Schema.define(version: 20150405085645) do
     t.integer  "company_id"
   end
 
-  add_index "experiences", ["city_id"], name: "index_experiences_on_city_id", using: :btree
-  add_index "experiences", ["company_id"], name: "index_experiences_on_company_id", using: :btree
-  add_index "experiences", ["country_id"], name: "index_experiences_on_country_id", using: :btree
-
   create_table "interests", force: true do |t|
     t.string   "title"
     t.string   "description"
@@ -148,11 +139,25 @@ ActiveRecord::Schema.define(version: 20150405085645) do
     t.integer "lbg_id"
   end
 
-  create_table "tags", force: true do |t|
-    t.string   "name"
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

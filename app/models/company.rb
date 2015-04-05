@@ -1,3 +1,3 @@
 class Company < ActiveRecord::Base
-  belongs_to :experience
+  has_one :experience
 end

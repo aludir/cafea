@@ -5,10 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :addresses
   has_many :educations
-  has_many :emails
+  has_many :contacts
   has_many :experiences
   has_many :languages
-  has_many :phones
   has_many :announcements
   has_many :comments
   has_and_belongs_to_many :lbgs

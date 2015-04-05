@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405085258) do
+ActiveRecord::Schema.define(version: 20150405085645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,10 @@ ActiveRecord::Schema.define(version: 20150405085258) do
     t.integer "tag_id"
   end
 
+  create_table "categories", force: true do |t|
+    t.string "name"
+  end
+
   create_table "cities", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -64,6 +68,17 @@ ActiveRecord::Schema.define(version: 20150405085258) do
     t.string "category"
   end
 
+  create_table "contacts", force: true do |t|
+    t.string   "content"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "category_id"
+  end
+
+  add_index "contacts", ["category_id"], name: "index_contacts_on_category_id", using: :btree
+
   create_table "countries", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -79,14 +94,6 @@ ActiveRecord::Schema.define(version: 20150405085258) do
     t.string   "grade"
     t.string   "activities"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "emails", force: true do |t|
-    t.string   "address"
-    t.string   "description"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -139,14 +146,6 @@ ActiveRecord::Schema.define(version: 20150405085258) do
   create_table "lbgs_users", id: false, force: true do |t|
     t.integer "user_id"
     t.integer "lbg_id"
-  end
-
-  create_table "phones", force: true do |t|
-    t.string   "number"
-    t.string   "description"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "tags", force: true do |t|

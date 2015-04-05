@@ -11,7 +11,7 @@ test:
   encoding: unicode
   database: AluDir_test
   pool: 5
-  username: AluDir
+  username: aludir
   password:
 
 production:
@@ -19,5 +19,5 @@ production:
   encoding: unicode
   database: AluDir_production
   pool: 5
-  username: AluDir
+  username: aludir
   password:

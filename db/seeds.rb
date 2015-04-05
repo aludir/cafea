@@ -4,7 +4,7 @@
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#   Mayor.create(name: 'Emanuel', city_id: cities.first)
 
 User.delete_all
 User.create(id: '1', email: 'john.doe@email.com', password: 'password',
@@ -29,26 +29,53 @@ User.create(id: '7',  email: 'zoltan@zoltan.com', password: 'password',
             password_confirmation: 'password', name: 'Zoltan', surname: 'Bartalis',
             birth_date: Time.gm(1988,8,17), uuid: SecureRandom.hex(n=6))
             
+Category.delete_all
+Category.create(id: '1', name: 'E-mail')
+Category.create(id: '2', name: 'Phone')
+Category.create(id: '3', name: 'Website')
+Category.create(id: '4', name: 'Skype')
+            
 
-Email.delete_all
-Email.create(user_id: '1', address: 'john.doe@email.com')#, type: 'Personal')
-Email.create(user_id: '1', address: 'john.doe@work.com')#, type: 'Work')
-Email.create(user_id: '2', address: 'tassos@natsakis.com')#, type: 'Personal')
-Email.create(user_id: '3', address: 'oanasipos@up-nxt.be')#, type: 'Work')
-Email.create(user_id: '3', address: 'oanasipos@gmail.com')#, type: 'Personal')
-Email.create(user_id: '3', address: 'oanasipos@courseware.ro')#, type: 'Start-up')
-Email.create(user_id: '4', address: 'filip.kis@gmail.com')#, type: 'Personal')
-Email.create(user_id: '5', address: 'gianalfa@gmail.com')#, type: 'Personal')
-Email.create(user_id: '6', address: 'ida.lao@best.eu.org')#, type: 'BEST')
-Email.create(user_id: '7', address: 'zoltan@tribe.gr')#, type: 'Undercover')
-Email.create(user_id: '2', address: 'natsakis.anastasios@gmail.com')#, type: 'Not-in-use')
+Contact.delete_all
+Contact.create(user_id: '1', content:  'john.doe@email.com', description: 'Personal', category_id: '1')
+Contact.create(user_id: '1', content:  'john.doe@work.com', description: 'Work', category_id: '1')
+Contact.create(user_id: '2', content:  'tassos@natsakis.com', description: 'Personal', category_id: '1')
+Contact.create(user_id: '3', content:  'oanasipos@up-nxt.be', description: 'Work', category_id: '1')
+Contact.create(user_id: '3', content:  'oanasipos@gmail.com', description: 'Personal', category_id: '1')
+Contact.create(user_id: '3', content:  'oanasipos@courseware.ro', description: 'Start-up', category_id: '1')
+Contact.create(user_id: '4', content:  'filip.kis@gmail.com', description: 'Personal', category_id: '1')
+Contact.create(user_id: '5', content:  'gianalfa@gmail.com', description: 'Personal', category_id: '1')
+Contact.create(user_id: '6', content:  'ida.lao@best.eu.org', description: 'BEST', category_id: '1')
+Contact.create(user_id: '7', content:  'zoltan@tribe.gr', description: 'Undercover', category_id: '1')
+Contact.create(user_id: '2', content:  'natsakis.anastasios@gmail.com', description: 'Not-in-use', category_id: '1')
+
+Country.delete_all
+Country.create(id: '1', name: 'Hikeland')
+Country.create(id: '2', name: 'Belgium')
+Country.create(id: '3', name: 'Greece')
+Country.create(id: '4', name: 'Romania')
+Country.create(id: '5', name: 'Discworld')
+
+City.delete_all
+City.create(id: '1', name: 'Hitchhike')
+City.create(id: '2', name: 'Leuven')
+City.create(id: '3', name: 'Thessaloniki')
+City.create(id: '4', name: 'Satu Mare')
+City.create(id: '5', name: 'Ankh-Morpork')
 
 Address.delete_all
 Address.create(user_id: '1', street: 'Streetstraat', number: '42', zip: '94610',
-               city: 'Hitchhike', country: 'Hikeland')
-
-Phone.delete_all
-Phone.create(user_id: '1', number: '0800800800')
+               city_id: '1', country_id: '1', description: 'Home')
+Address.create(user_id: '2', street: 'Diestsestraat', number: '50', zip: '3000',
+               city_id: '2', country_id: '2', description: 'Home')
+Address.create(user_id: '2', street: 'Pefkon', number: '3', zip: '56224',
+               city_id: '3', country_id: '3', description: 'Parents')
+Address.create(user_id: '3', street: 'Diestsestraat', number: '50', zip: '3000',
+               city_id: '2', country_id: '2', description: 'Home')
+Address.create(user_id: '3', street: 'Somesului', number: '22', zip: '543345',
+               city_id: '4', country_id: '4', description: 'Parents')
+Address.create(user_id: '3', street: 'Randomiac', number: '5', zip: '5545',
+               city_id: '5', country_id: '5', description: 'Dream')
 
 Language.delete_all
 Language.create(user_id: '1', name: 'Bringlish', level: 'native')
@@ -106,6 +133,7 @@ Tag.create(id: '8', name: 'Events')
 Tag.create(id: '9', name: 'Love')
 Tag.create(id: '10', name: 'AlumniNET')
 
+Interest.delete_all
 Interest.create(id: '1', title: 'Beer', description: 'Isn\'t it obvious?', initiator: '3')
 Interest.create(id: '2', title: 'Football', description: 'What? You don\t care about football?!?1', initiator: '1')
 Interest.create(id: '3', title: 'Entrepreneurship', description: 'Let\'s organise more ABCs!', initiator: '4')

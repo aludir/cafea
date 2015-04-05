@@ -9,11 +9,14 @@ class AnnouncementsController < ApplicationController
 
   def edit
     @announcement = Announcement.find(params[:id])
+    @tags = Tag.all
+    @selected = @announcement.tag_list
   end
 
   def new
   	@announcement = Announcement.new
   	@tags = Tag.all
+  	@selected = nil
   end
   
   def show

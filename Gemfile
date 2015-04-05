@@ -42,6 +42,9 @@ gem 'font-awesome-rails'
 # Gem for dealing with tags
 gem 'acts-as-taggable-on'
 
+# Gem for prettyfying selectors
+gem 'select2-rails'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 

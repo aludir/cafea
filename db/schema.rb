@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404175434) do
+ActiveRecord::Schema.define(version: 20150405084801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,12 @@ ActiveRecord::Schema.define(version: 20150404175434) do
     t.datetime "updated_at"
   end
 
+  create_table "companies", force: true do |t|
+    t.string "name"
+    t.string "description"
+    t.string "category"
+  end
+
   create_table "countries", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -87,7 +93,6 @@ ActiveRecord::Schema.define(version: 20150404175434) do
 
   create_table "experiences", force: true do |t|
     t.integer  "user_id"
-    t.string   "company"
     t.string   "title"
     t.date     "start_date"
     t.date     "end_date"
@@ -97,9 +102,11 @@ ActiveRecord::Schema.define(version: 20150404175434) do
     t.string   "field_of_work"
     t.integer  "country_id"
     t.integer  "city_id"
+    t.integer  "company_id"
   end
 
   add_index "experiences", ["city_id"], name: "index_experiences_on_city_id", using: :btree
+  add_index "experiences", ["company_id"], name: "index_experiences_on_company_id", using: :btree
   add_index "experiences", ["country_id"], name: "index_experiences_on_country_id", using: :btree
 
   create_table "interests", force: true do |t|

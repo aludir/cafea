@@ -1,5 +1,5 @@
 class Address < ActiveRecord::Base
   belongs_to :user
-  has_one :country
-  has_one :city
+  belongs_to :country
+  belongs_to :city
 end

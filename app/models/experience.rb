@@ -1,6 +1,6 @@
 class Experience < ActiveRecord::Base
   belongs_to :user
-  has_one :country
-  has_one :city
+  belongs_to :country
+  belongs_to :city
   has_one :company
 end

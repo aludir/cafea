@@ -1,4 +1,4 @@
 class City < ActiveRecord::Base
-  belongs_to :experience
-  belongs_to :address
+  has_one :experience
+  has_one :address
 end

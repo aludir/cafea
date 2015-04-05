@@ -1,21 +1,31 @@
-<%= form_for @announcement do |f| %>
-  <%= f.text_field :title, required: 'required', placeholder: 'Title' %>
-  <br>
-  <%= f.text_field :body, required: 'required', placeholder: 'Message' %>
-  <br>
-  
-  <div id="prefetch">
-    <%= fields_for :tags do |tags_fields|%>
-      <%= tags_fields.text_field :name, required: 'required', placeholder: 'Tags', class: 'typeahead' %>
-	<%end%>
+<div class="row">
+  <div class="col-md-5">
+
+	<%= form_for @announcement, html: {class: "form-group"} do |f| %>
+	  <div class="form-group">
+	  	<%= f.label :title %>
+	    <%= f.text_field :title, required: 'required', placeholder: 'Title', class: 'form-control' %>
+	  </div>
+	  <div class="form-group">
+	  	<%= f.label :body %>
+	    <%= f.text_area :body, required: 'required', placeholder: 'Message', class: 'form-control', rows: 10 %>
+	  </div>
+	  
+	  <div class="form-group">
+	    <%= fields_for :tags do |tags_fields|%>
+	      <%= tags_fields.label :tags%>
+	      <%= tags_fields.text_field :name, required: 'required', placeholder: 'Tags', class: 'js-example-tags form-control'%>
+	    <%end%>
+	  </div>
+	  
+	  <%= f.hidden_field :user_id, {value: current_user.id} %>
+	  <% if dom_id == "edit_announcement"%>
+	    <%= f.submit "Edit!", class: "btn btn-success" %>
+	    <%= button_to 'Delete', announcement_path(@announcement), method: :delete,
+	  data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+	  <%else%>
+	    <%= f.submit "Submit!", class: "btn btn-success" %>
+	  <%end%>
+	<% end %>
   </div>
-  
-  <%= f.hidden_field :user_id, {value: current_user.id} %>
-  <% if dom_id == "edit_announcement"%>
-    <%= f.submit "Edit!", class: "btn btn-success" %>
-    <%= button_to 'Delete', announcement_path(@announcement), method: :delete,
-  data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-  <%else%>
-    <%= f.submit "Submit!", class: "btn btn-success" %>
-  <%end%>
-<% end %>
+</div>

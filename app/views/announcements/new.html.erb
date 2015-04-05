@@ -1,31 +1,7 @@
 <script>
-var tags = new Bloodhound({
-  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-  queryTokenizer: Bloodhound.tokenizers.whitespace,
-  limit: 100,
-  prefetch: '/tags.json'
+$(document).ready(function() {
+  $(".js-example-basic-multiple").select2();
 });
- 
-// kicks off the loading/processing of `local` and `prefetch`
-tags.clearPrefetchCache();
-tags.initialize();
- 
-// passing in `null` for the `options` arguments will result in the default
-// options being used
-$('#prefetch .typeahead').typeahead(null, {
-  displayKey: 'name',
-  // `ttAdapter` wraps the suggestion engine in an adapter that
-  // is compatible with the typeahead jQuery plugin
-  source: tags.ttAdapter(),
-  templates: {
-    empty: ['<div class="empty-message">',
-      'No such tag exists.',
-      'But feel free to create it!',
-      '</div>'].join('\n')
-    }
-  }); 
 </script>
 
-<div class="row">
-	<%= render 'form', dom_id: 'new_announcement'%>
-</div>
+<%= render 'form', dom_id: 'new_announcement'%>

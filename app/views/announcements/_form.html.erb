@@ -14,7 +14,9 @@
 	  <div class="form-group">
 	    <%= fields_for :tags do |tags_fields|%>
 	      <%= tags_fields.label :tags%>
-	      <%= tags_fields.text_field :name, required: 'required', placeholder: 'Tags', class: 'js-example-tags form-control'%>
+	      <%= tags_fields.select :values, options_from_collection_for_select(@tags, 'name', 'name'), {},
+	      {required: 'required', placeholder: 'Tags',
+	      	class: 'js-example-basic-multiple form-control', multiple: "multiple"}%>
 	    <%end%>
 	  </div>
 	  

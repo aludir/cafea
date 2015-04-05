@@ -13,6 +13,7 @@ class AnnouncementsController < ApplicationController
 
   def new
   	@announcement = Announcement.new
+  	@tags = Tag.all
   end
   
   def show
@@ -49,7 +50,7 @@ class AnnouncementsController < ApplicationController
 
   def update
     @announcement = Announcement.find(params[:id])
-    @announcement.tag_list.add(tag_params.values.first.split(','))
+    @announcement.tag_list.add(tag_params.values)
     
     if @announcement.update(announcement_params)
       redirect_to @announcement
@@ -60,15 +61,15 @@ class AnnouncementsController < ApplicationController
 
   private
   def announcement_params
-    params.require(:announcement).permit(:user_id, :title, :body)
+    params.require(:announcement).permit(:user_id, :title, :body, :tag_list => [])
   end
   
   def comment_params
-    params.require(:comment).permit(:user_id, :body, :announcement_id, :tag_list => [])
+    params.require(:comment).permit(:user_id, :body, :announcement_id)
   end
   
   def tag_params
-    params.require(:tags).permit(:name)
+    params.require(:tags)
   end
   
   def sort_column

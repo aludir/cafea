@@ -1,4 +1,4 @@
-  <h2>Announcements</h2>
+  <h2>Announcements</h2>(<%= link_to 'Remove filtering by tags', announcements_path %>)
   <div class="table-responsive">
   <table class='table table-hover'>
     <thead>
@@ -16,7 +16,7 @@
         <tr>
           <td><%= link_to announcement.title, announcement_path(announcement) %></td>
           <td><%= link_to announcement.user.name+' '+announcement.user.surname, "/users/#{announcement.user.uuid}" %></td>
-          <td><%= announcement.tag_list %></td>
+          <td><% announcement.tag_list.each do |t| %><%= link_to t, announcements_tag_path(t) %> <% end %></td>
           <td><%= announcement.created_at.strftime("%Y-%m-%d") %></td>
           <td><%= announcement.comments.count %></td>
         </tr>

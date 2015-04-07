@@ -3,7 +3,12 @@ class AnnouncementsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-  	@announcements = Announcement.order(sort_column + ' ' + sort_direction)
+    if params[:tag].nil?
+      @announcement = Announcement.all
+    else
+      @announcement = Announcement.tagged_with(params[:tag])
+    end
+  	@announcements = @announcement.order(sort_column + ' ' + sort_direction)
     @self_announcements = Announcement.find_all_by_user_id(current_user.id)
   end
 

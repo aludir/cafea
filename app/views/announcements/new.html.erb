@@ -1,6 +1,11 @@
 <script>
+  var tags = [<% @tags.each do |tag| %>"<%= tag.name %>",<% end %>];
+  
 $(document).ready(function() {
-  $(".js-example-basic-multiple").select2();
+  $(".js-example-basic-multiple").val(['<%= @selected.to_s%>']).select2({
+  	tags: tags,
+  	tokenSeparators: [',', ' ']
+  });
 });
 </script>
 

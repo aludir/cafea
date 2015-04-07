@@ -53,7 +53,11 @@ class AnnouncementsController < ApplicationController
 
   def update
     @announcement = Announcement.find(params[:id])
-    @announcement.tag_list.add(tag_params.values)
+    current_tags = @announcement.tag_list
+    new_tags = tag_params.values.first.split(',')
+    
+    @announcement.tag_list.remove(current_tags - new_tags)
+    @announcement.tag_list.add(new_tags - current_tags)
     
     if @announcement.update(announcement_params)
       redirect_to @announcement

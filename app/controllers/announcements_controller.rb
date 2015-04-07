@@ -35,7 +35,7 @@ class AnnouncementsController < ApplicationController
   def add_comment
     @comment = Comment.new(comment_params)
     if @comment.save!
-      redirect_to announcements_path
+      redirect_to announcement_path(comment_params[:announcement_id])
     else
       redirect_to root_path
     end

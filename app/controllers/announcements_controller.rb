@@ -40,6 +40,14 @@ class AnnouncementsController < ApplicationController
       redirect_to root_path
     end
   end
+  
+  def del_comment
+    @comment = Comment.find(params[:id])
+    @announcement = @comment.announcement_id
+    @comment.destroy
+    
+    redirect_to announcement_path(@announcement)
+  end
 
   def create
   	@announcement = Announcement.new(announcement_params)

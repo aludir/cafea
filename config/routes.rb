@@ -11,5 +11,6 @@ AluDir::Application.routes.draw do
   resources :announcements
   resources :tags, only: [:index]
   
-  post 'add_comment', to: 'announcements#add_comment'
+  post 'comment', to: 'announcements#add_comment', as: 'add_comment'
+  delete 'comment/:id', to: 'announcements#del_comment', as: 'del_comment'
 end

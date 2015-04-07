@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_action :authenticate_user!
 
   def show
   @users = Search.for(params[:id_search], params[:name], 

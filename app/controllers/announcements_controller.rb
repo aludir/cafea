@@ -1,5 +1,7 @@
 class AnnouncementsController < ApplicationController
   before_action :authenticate_user!
+  before_action :user_owns_announcement?, :only => [:edit, :destroy]
+  before_action :user_owns_comment?, :only => [:del_comment]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -98,5 +100,25 @@ class AnnouncementsController < ApplicationController
   
   def sort_direction
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  end
+  
+  def user_owns_announcement?
+    @announcement = Announcement.find(params[:id])
+    if !user_validation(@announcement)
+      flash[:alert]="You are not the owner of this announcement!"
+      redirect_to announcements_path
+    end
+  end
+  
+  def user_owns_comment?
+    @comment = Comment.find(params[:id])
+    if !user_validation(@comment)
+      flash[:alert]="You are not the owner of this comment!"
+      redirect_to announcement_path(@comment.announcement.id)
+    end
+  end
+  
+  def user_validation(resource)
+    resource.user.id == current_user.id
   end
 end

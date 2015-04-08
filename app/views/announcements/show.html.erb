@@ -5,7 +5,7 @@
 		<div class="well col-md-4">
 			By: <%= link_to @user.name+' '+@user.surname, user_path(@user) %>
 			<br>
-			Tags: <%= @announcement.tags.map {|k| k[:name]}.join(', ') %>
+			Tags: <% @announcement.tag_list.each do |t| %><%= link_to t, announcements_tag_path(t) %> <% end %>
 			<br>
 			Posted on: <%= @announcement.created_at.strftime("%Y-%m-%d") %>
 			<br>

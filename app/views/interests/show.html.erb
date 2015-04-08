@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-10">
+    <div class="row">
+      <div class="well col-md-4">
+		<% @user = User.find(@interest.initiator)%>
+		By: <%= link_to @user.name+' '+@user.surname, user_path(@user) %>
+		<br>
+        Created on: <%= @interest.created_at.strftime("%Y-%m-%d") %>
+        <br>
+        Description: <%= @interest.description %>
+        <% if @interest.initiator == current_user.id %>
+          <%= link_to 'edit now?', edit_interest_path %>
+        <% end %>
+      </div>
+    </div>
+    <% if @is_member %>
+    	<%= link_to 'Leave the group', leave_interest_path(@interest), method: :post, class: 'btn btn-danger'%>
+    <% else %>
+    	<%= link_to 'Join the group', join_interest_path(@interest), method: :post, class: 'btn btn-success'%>
+    <% end %>
+    <div class="row">
+      <h2>Members</h2>
+      <ol>
+      	<% @interest.users.each do |u| %>
+      	  <%= link_to u.name+' '+u.surname, "/users/#{u.uuid}" %>
+      	<% end %>      	
+      </ol>
+    </div>
+  </div>
+</div>

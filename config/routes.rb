@@ -6,6 +6,9 @@ AluDir::Application.routes.draw do
   root "search#index"
 
   resources :search, only: [:index, :show]
+  resources :interests
+  post 'interest/:id/join', to: 'interests#join', as: 'join_interest'
+  post 'interest/:id/leave', to: 'interests#leave', as: 'leave_interest'
 
   resources :users, only: [:index, :show]
   resources :announcements

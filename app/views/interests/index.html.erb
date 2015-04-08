@@ -1,0 +1,30 @@
+  <div class="row">
+  	<div class="col-md-10">
+  	<h2>Interests</h2>
+	  <div class="table-responsive">
+	  <table class='table table-hover'>
+	    <thead>
+	      <tr>
+	        <th><%= sortable 'title' %></th>
+	        <th>Initiator</th>
+	        <th>Members</th>
+	        <th><%= sortable 'created_at', 'Date'%></th>
+	      </tr>
+	    </thead>
+	
+	    <tbody> 
+	      <% @interests.each do |interest| %>
+	        <tr>
+	          <td><%= link_to interest.title, interest_path(interest) %></td>
+	          <% @user = User.find(interest.initiator) %>
+	          <td><%= link_to @user.name+' '+@user.surname, "/users/#{@user.uuid}" %></td>
+	          <td><%= interest.users.count %></td>
+	          <td><%= interest.created_at.strftime("%Y-%m-%d") %></td>
+	        </tr>
+	      <% end %>
+	    </tbody>
+	  </table>
+	</div>
+	<center><%= link_to 'Create new interest', new_interest_path, class: 'btn btn-success'%></center>
+	</div>
+  </div>

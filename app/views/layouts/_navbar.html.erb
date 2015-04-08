@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><%= link_to 'Users', users_path %></li>
         <li><%= link_to(announcements_path) do %>
-        Announcements <span class="badge" data-toggle="tooltip" data-placement="right" title="Surveys created"><%= @announce_count%></span><%end%></li>
+        Announcements <span class="badge" data-toggle="tooltip" data-placement="right" title="New announcements since your last visit!"><%= @announce_count%></span><%end%></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

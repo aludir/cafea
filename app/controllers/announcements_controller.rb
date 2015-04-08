@@ -2,6 +2,7 @@ class AnnouncementsController < ApplicationController
   before_action :authenticate_user!
   before_action :user_owns_announcement?, :only => [:edit, :destroy]
   before_action :user_owns_comment?, :only => [:del_comment]
+  before_action :visited_announcements?, :only => [:index]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -120,5 +121,10 @@ class AnnouncementsController < ApplicationController
   
   def user_validation(resource)
     resource.user.id == current_user.id
+  end
+  
+  def visited_announcements?
+    current_user.visited_announcements_at = Time.now
+    current_user.save!
   end
 end

@@ -17,7 +17,6 @@ class AnnouncementsController < ApplicationController
   end
 
   def edit
-    @announcement = Announcement.find(params[:id])
     @tags = Tag.all
     @selected = @announcement.tag_list
   end
@@ -35,9 +34,8 @@ class AnnouncementsController < ApplicationController
   end
 
   def destroy
-    @announcement = Announcement.find(params[:id])
+    @announcement.tag_list.remove(current_tags)
     @announcement.destroy
-
     flash[:notice]="You deleted your announcement"
     redirect_to announcements_path
   end
@@ -54,7 +52,6 @@ class AnnouncementsController < ApplicationController
   end
   
   def del_comment
-    @comment = Comment.find(params[:id])
     @announcement = @comment.announcement_id
     @comment.destroy
     
@@ -64,21 +61,18 @@ class AnnouncementsController < ApplicationController
 
   def create
   	@announcement = Announcement.new(announcement_params)
-  	@announcement.tag_list.add(tag_params.values.first.split(','))
+  	@announcement.tag_list.add(new_tags)
   	if @announcement.save!
   	  flash[:success]="You created an announcement successfully!"
     	redirect_to announcements_path
-   else
+    else
      flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
      render_to new_announcement_path
-   end
+    end
   end
 
   def update
-    @announcement = Announcement.find(params[:id])
-    current_tags = @announcement.tag_list
-    new_tags = tag_params.values.first.split(',')
-    
+    @announcement = Announcement.find(params[:id])    
     @announcement.tag_list.remove(current_tags - new_tags)
     @announcement.tag_list.add(new_tags - current_tags)
     
@@ -135,5 +129,13 @@ class AnnouncementsController < ApplicationController
   def visited_announcements?
     current_user.visited_announcements_at = Time.now
     current_user.save!
+  end
+  
+  def current_tags
+    @announcement.tag_list
+  end
+  
+  def new_tags
+    tag_params.values.first.split(',')
   end
 end

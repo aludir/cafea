@@ -9,10 +9,10 @@ AluDir::Application.routes.draw do
 
   resources :users, only: [:index, :show]
   resources :announcements
-  resources :tags, only: [:index]
-  
   get 'announcements?tag=:id', to: 'announcements#index', as: 'announcements_tag'
   
+  resources :tags, only: [:index]
+    
   post 'comment', to: 'announcements#add_comment', as: 'add_comment'
   delete 'comment/:id', to: 'announcements#del_comment', as: 'del_comment'
 end

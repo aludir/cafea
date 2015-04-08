@@ -35,6 +35,7 @@ class AnnouncementsController < ApplicationController
 
   def destroy
     @announcement.tag_list.remove(current_tags)
+    @announcement.save!
     @announcement.destroy
     flash[:notice]="You deleted your announcement"
     redirect_to announcements_path

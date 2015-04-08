@@ -21,7 +21,7 @@
 	  
 	  <%= f.hidden_field :user_id, {value: current_user.id} %>
 	  <% if dom_id == "edit_announcement"%>
-	    <%= f.submit "Edit!", class: "btn btn-success" %>
+	    <%= button_to "Edit!", edit_announcement_path(@announcement), class: "btn btn-success" %>
 	    <%= button_to 'Delete', announcement_path(@announcement), method: :delete,
 	  data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 	  <%else%>

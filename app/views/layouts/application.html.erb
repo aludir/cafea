@@ -11,10 +11,10 @@
 <body>
   <% if user_signed_in? %>
     <%= render 'layouts/navbar' %>
+    <%= render "layouts/messages" %>
+
   <% end %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
   <div class="container">
     <%= yield %>

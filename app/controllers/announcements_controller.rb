@@ -38,14 +38,17 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.find(params[:id])
     @announcement.destroy
 
+    flash[:notice]="You deleted your announcement"
     redirect_to announcements_path
   end
   
   def add_comment
     @comment = Comment.new(comment_params)
     if @comment.save!
+      flash[:success]="You added a new comment!"
       redirect_to announcement_path(comment_params[:announcement_id])
     else
+      flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
       redirect_to root_path
     end
   end
@@ -55,6 +58,7 @@ class AnnouncementsController < ApplicationController
     @announcement = @comment.announcement_id
     @comment.destroy
     
+    flash[:notice]="You deleted your comment successfully"
     redirect_to announcement_path(@announcement)
   end
 
@@ -62,8 +66,10 @@ class AnnouncementsController < ApplicationController
   	@announcement = Announcement.new(announcement_params)
   	@announcement.tag_list.add(tag_params.values.first.split(','))
   	if @announcement.save!
+  	  flash[:success]="You created an announcement successfully!"
     	redirect_to announcements_path
    else
+     flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
      render_to new_announcement_path
    end
   end
@@ -77,8 +83,10 @@ class AnnouncementsController < ApplicationController
     @announcement.tag_list.add(new_tags - current_tags)
     
     if @announcement.update(announcement_params)
+      flash[:success]="You updated your announcement successfully!"
       redirect_to @announcement
     else
+      flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
       render 'edit'
     end
   end

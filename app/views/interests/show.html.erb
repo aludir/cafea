@@ -1,9 +1,12 @@
 <div class="row">
   <div class="col-md-10">
     <div class="row">
+      <h2><%= @interest.title %></h2>
       <div class="well col-md-4">
 		<% @user = User.find(@interest.initiator)%>
 		By: <%= link_to @user.name+' '+@user.surname, user_path(@user) %>
+		<br>
+		Address: <%= @interest.title %>@aludir.net
 		<br>
         Created on: <%= @interest.created_at.strftime("%Y-%m-%d") %>
         <br>
@@ -22,8 +25,8 @@
       <h2>Members</h2>
       <ol>
       	<% @interest.users.each do |u| %>
-      	  <%= link_to u.name+' '+u.surname, "/users/#{u.uuid}" %>
-      	<% end %>      	
+      	  <li><%= link_to u.name+' '+u.surname, "/users/#{u.uuid}" %></li>
+      	<% end %>
       </ol>
     </div>
   </div>

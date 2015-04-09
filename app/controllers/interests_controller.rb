@@ -10,6 +10,37 @@ class InterestsController < ApplicationController
     @is_member = is_member?
   end
   
+  def edit
+    @interest = Interest.find(params[:id])
+  end
+  
+  def new
+    @interest = Interest.new
+  end
+  
+  def create
+    @interest = Interest.new(interest_params)
+    if @interest.save!
+      flash[:success]="You created new interest successfully!"
+      redirect_to interests_path
+    else
+     flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
+     render_to new_interest_path
+    end
+  end
+  
+  def update
+    @interest = Interest.find(params[:id])
+    
+    if @interest.update(interest_params)
+      flash[:success]="You updated your interest group successfully!"
+      redirect_to @interest
+    else
+      flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
+      render 'edit'
+    end
+  end
+  
   def join
     if is_member?
       flash[:alert]='You are already part of this group'
@@ -31,6 +62,10 @@ class InterestsController < ApplicationController
   end
   
   private
+  
+  def interest_params
+    params.require(:interest).permit(:initiator, :title, :description)
+  end
   
   def sort_column
     Interest.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'

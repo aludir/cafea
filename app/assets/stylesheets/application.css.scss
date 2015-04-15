@@ -16,7 +16,6 @@
  *= require_tree .
  */
 
-
 th .current {
   padding-right: 30px;
   background-repeat: no-repeat;
@@ -28,4 +27,11 @@ th .asc {
 
 th .desc { 
   background-image: url(/images/Arrow-Down-icon.png); 
+}
+
+.sign_in {
+  background-image: url(/images/europe.jpg);
+  background-repeat: no-repeat;
+  min-width: 100%;
+  min-height: 100%;
 }

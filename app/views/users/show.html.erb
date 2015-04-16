@@ -20,7 +20,7 @@
   </div>
   <div class="tab-pane" id="professional">
     <div class="table-responsive">
-  	  <table class='table table-hover'>
+      <table class='table table-hover'>
         <thead>
           <tr>
             <th>Company</th>
@@ -31,20 +31,20 @@
           </tr>
         </thead>
         <%@user.experiences.each do |x| %>
-			<tr>
-				<td><%= x.company %></td>
-				<td><%= x.title %></td>
-				<td><%= x.start_date %></td>
-				<td><%= x.end_date %></td>
-				<td><%= x.field_of_work %></td>
-			</tr>
-		<%end%>
-	</table>
-	</div>
+      <tr>
+        <td><%= x.company %></td>
+        <td><%= x.title %></td>
+        <td><%= x.start_date %></td>
+        <td><%= x.end_date %></td>
+        <td><%= x.field_of_work %></td>
+      </tr>
+    <%end%>
+  </table>
+  </div>
   </div>
   <div class="tab-pane" id="education">
     <div class="table-responsive">
-  	  <table class='table table-hover'>
+      <table class='table table-hover'>
         <thead>
           <tr>
             <th>School</th>
@@ -55,72 +55,72 @@
           </tr>
         </thead>
         <%@user.educations.each do |e| %>
-			<tr>
-				<td><%= e.school %></td>
-				<td><%= e.grade %></td>
-				<td><%= e.start_date %></td>
-				<td><%= e.end_date %></td>
-				<td><%= e.field %></td>
-			</tr>
-		<%end%>
-	</table>
-	</div>
-	<div class="table-responsive">
-  	  <table class='table table-hover'>
+      <tr>
+        <td><%= e.school %></td>
+        <td><%= e.grade %></td>
+        <td><%= e.start_date %></td>
+        <td><%= e.end_date %></td>
+        <td><%= e.field %></td>
+      </tr>
+    <%end%>
+  </table>
+  </div>
+  <div class="table-responsive">
+      <table class='table table-hover'>
         <thead>
           <tr>
             <th>Language</th>
             <th>Level</th>
           </tr>
         </thead>
-        <%@user.languages.each do |l| %>
-			<tr>
-				<td><%= l.name %></td>
-				<td><%= l.level %></td>
-			</tr>
-		<%end%>
-	</table>
-	</div>
-	
+        <% @user.languages.each do |l| %>
+      <tr>
+        <td><%= l.name %></td>
+        <td><%= l.level %></td>
+      </tr>
+    <%end%>
+  </table>
+  </div>
+  
   </div>
   <div class="tab-pane" id="contact">
     <div class="table-responsive">
-    	<table class='table table-hover'>
-    		<thead>
-    			<tr>
-    				<th>E-mail</th>
-    				<th>Type</th>
-    			</tr>
-    		</thead>
-    		<% @user.contacts.each do |c| %>
-    			<tr>
-    				<td><a href='mailto:<%= c.content %>'><%= c.content %></a></td>
-    				<td><%= c.description %></td>
-    			</tr>
-    		<% end %>
-    	</table>
+      <table class='table table-hover'>
+        <thead>
+          <tr>
+            <th>E-mail</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <% @user.contacts.each do |c| %>
+          <tr>
+            <td><a href='mailto:<%= c.content %>'><%= c.content %></a></td>
+            <td><%= c.description %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
     <div class="table-responsive">
-    	<table class='table table-hover'>
-    		<thead>
-    			<tr>
-    				<th>Address</th>
-    				<th>Address type</th>
-    			</tr>
-    		</thead>
-    		<% @user.addresses.each do |a| %>
-    			<tr>
-    				<td><%= a.street+' '+a.number+', '+a.city.name+', '+a.zip+', '+a.country.name %></td>
-    				<td><%= a.description %></td>
-    			</tr>
-    		<% end %>
-    	</table>
+      <table class='table table-hover'>
+        <thead>
+          <tr>
+            <th>Address</th>
+            <th>Address type</th>
+          </tr>
+        </thead>
+        <% @user.addresses.each do |a| %>
+          <tr>
+            <td><%= a.street+' '+a.number+', '+a.city.name+', '+a.zip+', '+a.country.name %></td>
+            <td><%= a.description %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
   <div class="tab-pane" id="interests">
     This user is part of the following interests groups:
     <% @user.interests.each do |i| %>
-    	<%= link_to i.title, interest_path(i) %>
+      <%= link_to i.title, interest_path(i) %>
     <% end %>
   </div>
 </div>

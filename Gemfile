@@ -18,6 +18,10 @@ gem 'twitter-bootstrap-rails'
 # Use bootstrap
 gem 'bootstrap-sass'
 
+# Pagination
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+
 # Using twitter's typeahead gem
 gem 'twitter-typeahead-rails'
 

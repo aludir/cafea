@@ -1,77 +1,77 @@
-  <div class="row">
-  	<div class="col-md-2">
-  		<h4>Filter by tags</h4>
-  		<% unless params[:tag].nil? %><%= link_to 'Remove filter?', announcements_path %><%end%>
-  		<div class="well">
-  			<% @tags.each do |t| %>
-  				<% if params[:tag]== t.name %><b><%end%>
-  					<%= link_to t.name, announcements_tag_path(t.name) %><br/>
-  				<% if params[:tag] == t.name %></b><%end%>
-  			<% end %>
-		</div>
-  	</div>
-  	<div class="col-md-10">
-  	<h2>Announcements</h2>
-	  <div class="table-responsive">
-	  <table class='table table-hover'>
-	    <thead>
-	      <tr>
-	        <th><%= sortable 'title' %></th>
-	        <th><%= sortable 'user_id', 'Announcer' %></th>
-	        <th>Tags</th>
-	        <th><%= sortable 'created_at', 'Date'%></th>
-	        <th>Comments</th>
-	      </tr>
-	    </thead>
-	
-	    <tbody> 
-	      <% @announcements.each do |announcement| %>
-	        <tr>
-	          <td><%= link_to announcement.title, announcement_path(announcement) %></td>
-	          <td><%= link_to announcement.user.name+' '+announcement.user.surname, "/users/#{announcement.user.uuid}" %></td>
-	          <td><% announcement.tag_list.each do |t| %><%= link_to t, announcements_tag_path(t) %> <% end %></td>
-	          <td><%= announcement.created_at.strftime("%Y-%m-%d") %></td>
-	          <td><%= announcement.comments.count %></td>
-	        </tr>
-	      <% end %>
-	    </tbody>
-	  </table>
-	</div>
-	<center><%= link_to 'Announce too!', new_announcement_path, class: 'btn btn-success'%></center>
-	</div>
+<div class="row">
+  <div class="col-md-2">
+    <h4>Filter by tags</h4>
+    <% unless params[:tag].nil? %><%= link_to 'Remove filter?', announcements_path %><%end%>
+    <div class="well">
+      <% @tags.each do |t| %>
+        <% if params[:tag]== t.name %><b><%end%>
+            <%= link_to t.name, announcements_tag_path(t.name) %><br/>
+        <% if params[:tag] == t.name %></b><%end%>
+      <% end %>
+    </div>
   </div>
-
+  <div class="col-md-10">
+  <h2>Announcements</h2>
+    <div class="table-responsive">
+    <table class='table table-hover'>
+      <thead>
+        <tr>
+          <th><%= sortable 'title' %></th>
+          <th><%= sortable 'user_id', 'Announcer' %></th>
+          <th>Tags</th>
+          <th><%= sortable 'created_at', 'Date'%></th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+  
+      <tbody> 
+        <% @announcements.each do |announcement| %>
+          <tr>
+            <td><%= link_to announcement.title, announcement_path(announcement) %></td>
+            <td><%= link_to announcement.user.name+' '+announcement.user.surname, "/users/#{announcement.user.uuid}" %></td>
+            <td><% announcement.tag_list.each do |t| %><%= link_to t, announcements_tag_path(t) %> <% end %></td>
+            <td><%= announcement.created_at.strftime("%Y-%m-%d") %></td>
+            <td><%= announcement.comments.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <center><%= link_to 'Announce too!', new_announcement_path, class: 'btn btn-success'%></center>
+  </div>
+  <%= will_paginate @announcements, renderer: BootstrapPagination::Rails, class: 'pull-right' %>
+</div>
 
 <div class="row">
   <div class="col-md-12">
-	<% unless @self_announcements.empty? %>
-	
-	<h2>Your announcements</h2>
-	  <div class="table-responsive">
-	    <table class='table table-hover'>
-	      <thead>
-	        <tr>  
-	          <th>Title</th>
-	          <th>Tags</th>
-	          <th>Date</th>
-	          <th>Comments</th>
-	          <th></th>
-	        </tr>
-	      </thead>
-	
-	      <tbody>
-	        <% @self_announcements.each do |announcement| %>
-	          <tr>
-	            <td><%= link_to announcement.title, announcement_path(announcement) %></td>
-	            <td><%= announcement.tag_list %></td>
-	            <td><%= announcement.created_at.strftime("%Y-%M-%d") %></td>
-	            <td><%= announcement.comments.count %></td>
-	            <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
-	          </tr>
-	        <% end %>
-	      </tbody>
-	    </table>
-	  </div>
-	<%end%>
+    <% unless @self_announcements.empty? %>
+    
+    <h2>Your announcements</h2>
+      <div class="table-responsive">
+        <table class='table table-hover'>
+          <thead>
+            <tr>  
+              <th>Title</th>
+              <th>Tags</th>
+              <th>Date</th>
+              <th>Comments</th>
+              <th></th>
+            </tr>
+          </thead>
+    
+          <tbody>
+            <% @self_announcements.each do |announcement| %>
+              <tr>
+                <td><%= link_to announcement.title, announcement_path(announcement) %></td>
+                <td><%= announcement.tag_list %></td>
+                <td><%= announcement.created_at.strftime("%Y-%M-%d") %></td>
+                <td><%= announcement.comments.count %></td>
+                <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <%end%>
   </div>
 </div>

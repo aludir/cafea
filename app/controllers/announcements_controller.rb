@@ -11,6 +11,7 @@ class AnnouncementsController < ApplicationController
     else
       @announcement = Announcement.tagged_with(params[:tag])
     end
+    @announcements = Announcement.paginate(page: params[:page], per_page: 2)
     @tags = Tag.find(:all, :conditions => ["taggings_count > 0"]).first(10)
   	@announcements = @announcement.order(sort_column + ' ' + sort_direction)
     @self_announcements = Announcement.find_all_by_user_id(current_user.id)

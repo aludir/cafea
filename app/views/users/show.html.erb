@@ -118,10 +118,18 @@
     </div>
   </div>
   <div class="tab-pane" id="interests">
-    This user is part of the following interests groups:
-    <% @user.interests.each do |i| %>
-      <%= link_to i.title, interest_path(i) %>
+    This user is part of the following interest groups:
+    <ol>
+    <% @interests.each do |i| %>
+      <li><%= link_to i.title, interest_path(i) %></li>
     <% end %>
+    </ol>
+    And is the initiator of the following interest groups:
+    <ol>
+	<% @own_interests.each do |i| %>
+      <li><%= link_to i.title, interest_path(i) %> with <%= i.users.count %> member(s)</li>
+	<% end %>    	
+    </ol>
   </div>
 </div>
 

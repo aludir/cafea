@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(:first, :conditions => ["uuid = ? ", params[:id]])
+    @interests = @user.interests
+    @own_interests = Interest.find(:all, :conditions => ["initiator = ? ", @user.id])
   end
 
   private

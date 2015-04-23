@@ -28,7 +28,7 @@
         <% @announcements.each do |announcement| %>
           <tr>
             <td><%= link_to announcement.title, announcement_path(announcement) %></td>
-            <td><%= link_to announcement.user.name+' '+announcement.user.surname, "/users/#{announcement.user.uuid}" %></td>
+            <td><%= link_to announcement.user.name+' '+announcement.user.surname, user_path(announcement.user.uuid) %></td>
             <td><% announcement.tag_list.each do |t| %><%= link_to t, announcements_tag_path(t) %> <% end %></td>
             <td><%= announcement.created_at.strftime("%Y-%m-%d") %></td>
             <td><%= announcement.comments.count %></td>

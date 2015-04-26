@@ -15,6 +15,11 @@ AluDir::Application.routes.draw do
   get 'announcements?tag=:id', to: 'announcements#index', as: 'announcements_tag'
   
   resources :tags, only: [:index]
+  resources :contacts, except: [:index, :create, :show]
+  resources :addresses, except: [:index, :create, :show]
+  resources :languages, except: [:index, :create, :show]
+  resources :educations, except: [:index, :create, :show]
+  resources :experiences, except: [:index, :create, :show]
     
   post 'comment', to: 'announcements#add_comment', as: 'add_comment'
   delete 'comment/:id', to: 'announcements#del_comment', as: 'del_comment'

@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  
+  def user_validation(resource)
+    resource.user.id == current_user.id
+  end
 
   private
   def after_sign_in_path_for(resource)

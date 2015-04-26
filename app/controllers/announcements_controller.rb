@@ -123,10 +123,6 @@ class AnnouncementsController < ApplicationController
     end
   end
   
-  def user_validation(resource)
-    resource.user.id == current_user.id
-  end
-  
   def visited_announcements?
     current_user.visited_announcements_at = Time.now
     current_user.save!

@@ -4,7 +4,7 @@
       <h2><%= @interest.title %></h2>
       <div class="well col-md-4">
 		<% @user = User.find(@interest.initiator)%>
-		By: <%= link_to @user.name+' '+@user.surname, user_path(@user) %>
+		By: <%= link_to @user.name+' '+@user.surname, user_path(@user.uuid) %>
 		<br>
 		Address: <%= @interest.title %>@aludir.net
 		<br>
@@ -25,7 +25,7 @@
       <h2>Members</h2>
       <ol>
       	<% @interest.users.each do |u| %>
-      	  <li><%= link_to u.name+' '+u.surname, "/users/#{u.uuid}" %></li>
+      	  <li><%= link_to u.name+' '+u.surname, user_path(u.uuid) %></li>
       	<% end %>
       </ol>
     </div>

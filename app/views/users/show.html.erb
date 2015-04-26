@@ -14,7 +14,8 @@
     Old_surname: <%= @user.old_surname %></br>
     Gender: <%= @user.gender%></br>
     Birthdate: <%= @user.birth_date%></br>
-    Joined on: <%= @user.created_at.strftime("%Y-%m-%d") %>
+    Joined on: <%= @user.created_at.strftime("%Y-%m-%d") %><br>
+    <% if correct_user?(@user) %><%= link_to 'Edit', edit_user_registration_path, class: "btn btn-success" %><% end %>
   </div>
   <div class="tab-pane" id="professional">
     <div class="table-responsive">
@@ -26,6 +27,7 @@
             <th>Starting date</th>
             <th>Ending date</th>
             <th>Field</th>
+            <th></th>
           </tr>
         </thead>
         <%@user.experiences.each do |x| %>
@@ -35,6 +37,7 @@
         <td><%= x.start_date %></td>
         <td><%= x.end_date %></td>
         <td><%= x.field_of_work %></td>
+        <td><% if correct_user?(@user) %><%= link_to "Remove", experience_path(x), method: :delete %><%end%></td>
       </tr>
     <%end%>
   </table>
@@ -50,6 +53,7 @@
             <th>Starting date</th>
             <th>Ending date</th>
             <th>Field</th>
+            <th></th>
           </tr>
         </thead>
         <%@user.educations.each do |e| %>
@@ -59,6 +63,7 @@
         <td><%= e.start_date %></td>
         <td><%= e.end_date %></td>
         <td><%= e.field %></td>
+        <td><% if correct_user?(@user) %><%= link_to "Remove", education_path(e), method: :delete %><%end%></td>
       </tr>
     <%end%>
   </table>
@@ -69,12 +74,14 @@
           <tr>
             <th>Language</th>
             <th>Level</th>
+            <th></th>
           </tr>
         </thead>
         <% @user.languages.each do |l| %>
       <tr>
         <td><%= l.name %></td>
         <td><%= l.level %></td>
+        <td><% if correct_user?(@user) %><%= link_to "Remove", language_path(l), method: :delete %><%end%></td>
       </tr>
     <%end%>
   </table>
@@ -88,16 +95,19 @@
           <tr>
             <th>E-mail</th>
             <th>Type</th>
+            <th></th>
           </tr>
         </thead>
         <tr>
           <td><a href='mailto:<%= @user.email %>'><%= @user.email%></td>
           <td>Primary e-mail</td>
+          <td><% if correct_user?(@user) %><%= link_to "Edit", edit_user_registration_path %><%end%></td>
         </tr>
         <% @user.contacts.each do |c| %>
           <tr>
             <td><a href='mailto:<%= c.content %>'><%= c.content %></a></td>
             <td><%= c.description %></td>
+            <td><% if correct_user?(@user) %><%= link_to "Remove", contact_path(c), method: :delete %><%end%></td>
           </tr>
         <% end %>
       </table>
@@ -108,12 +118,14 @@
           <tr>
             <th>Address</th>
             <th>Address type</th>
+            <th></th>
           </tr>
         </thead>
         <% @user.addresses.each do |a| %>
           <tr>
             <td><%= a.street+' '+a.number+', '+a.city.name+', '+a.zip+', '+a.country.name %></td>
             <td><%= a.description %></td>
+            <td><% if correct_user?(@user) %><%= link_to "Remove", address_path(a), method: :delete %><%end%></td>
           </tr>
         <% end %>
       </table>
@@ -135,7 +147,4 @@
   </div>
 </div>
 
-<% if @user.id == current_user.id %>
-  <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-success" %>
-<% end %>
 <%= link_to 'Back', users_path, class: "btn btn-default" %>

@@ -107,7 +107,7 @@
           <tr>
             <td><a href='mailto:<%= c.content %>'><%= c.content %></a></td>
             <td><%= c.description %></td>
-            <td><% if correct_user?(@user) %><%= link_to "Remove", contact_path(c), method: :delete %><%end%></td>
+            <td><% if correct_user?(@user) %><%= link_to "Remove", contact_path(c), method: :delete, data: { confirm: 'Are you sure?' } %><%end%></td>
           </tr>
         <% end %>
       </table>

@@ -59,7 +59,9 @@
 	    </div>
 	  </div>
 	</div>
-	
+  <% end %>
+
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 	<div class="modal fade bs-example-modal-sm" id="delete_account">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -83,7 +85,7 @@
 	    </div>
 	  </div>
 	</div>	
-  <% end %>
+  <%end%>
   
   <!-- Thanks to Raphael! https://gist.github.com/raphaelescoyez/8c24c50ebb3740a779a7 -->
 <script type="text/javascript">

@@ -1,4 +1,4 @@
-<h1 class="text-center">Viewing User</h1>
+<h1 class="text-center">Profile of <%= @user.name %> <%= @user.surname %></h1>
 
 <ul class="nav nav-tabs" id="myTab">
   <li class="active"><a data-target="#personal" data-toggle="tab">Personal Info</a></li>
@@ -10,8 +10,6 @@
 
 <div class="tab-content">
   <div class="tab-pane active" id="personal">  
-    <p><%= @user.name %> <%= @user.surname %></p>
-    E-mail: <a href="mailto:<%= @user.email%>" ><%= @user.email%></a></br>
     Nickname: <%= @user.nickname %></br>
     Old_surname: <%= @user.old_surname %></br>
     Gender: <%= @user.gender%></br>
@@ -92,6 +90,10 @@
             <th>Type</th>
           </tr>
         </thead>
+        <tr>
+          <td><a href='mailto:<%= @user.email %>'><%= @user.email%></td>
+          <td>Primary e-mail</td>
+        </tr>
         <% @user.contacts.each do |c| %>
           <tr>
             <td><a href='mailto:<%= c.content %>'><%= c.content %></a></td>
@@ -134,6 +136,6 @@
 </div>
 
 <% if @user.id == current_user.id %>
-  <%= link_to 'Edit', edit_user_registration_path %> |
+  <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-success" %>
 <% end %>
 <%= link_to 'Back', users_path, class: "btn btn-default" %>

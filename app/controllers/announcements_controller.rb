@@ -1,7 +1,11 @@
 class AnnouncementsController < ApplicationController
   before_action :authenticate_user!
-  before_action :user_owns_announcement?, :only => [:edit, :destroy]
-  before_action :user_owns_comment?, :only => [:del_comment]
+  before_action only: [:edit, :destroy] do
+    user_owns_resource?(Announcement)
+  end
+  before_action only: [:del_comment] do
+    user_owns_resource?(Comment) 
+  end
   before_action :visited_announcements?, :only => [:index]
   helper_method :sort_column, :sort_direction
 
@@ -18,6 +22,7 @@ class AnnouncementsController < ApplicationController
 
   def edit
     @tags = Tag.all
+    @announcement = @resource
     @selected = @announcement.tag_list
   end
 
@@ -105,14 +110,6 @@ class AnnouncementsController < ApplicationController
   
   def sort_direction
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "desc"
-  end
-  
-  def user_owns_announcement?
-    @announcement = Announcement.find(params[:id])
-    if !user_validation(@announcement)
-      flash[:alert]="You are not the owner of this announcement!"
-      redirect_to announcements_path
-    end
   end
   
   def user_owns_comment?

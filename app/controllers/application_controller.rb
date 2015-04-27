@@ -15,8 +15,16 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def user_owns_resource?(resource)
+    @resource = resource.find(params[:id])
+    if !user_validation(@resource)
+      flash[:alert]="You are not the owner of this "+resource.name+"!"
+      redirect_to root_path
+    end
+  end
+  
   def user_validation(resource)
-    resource.user.id == current_user.id
+    resource.user == current_user
   end
 
   private

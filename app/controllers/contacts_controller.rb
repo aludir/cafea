@@ -1,7 +1,8 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :user_owns_contact?, :only => [:edit, :destroy]
-  
+  before_action only: [:edit, :destroy] do
+    user_owns_resource?(Contact)
+  end
   
   def destroy
     @contact.destroy
@@ -12,13 +13,5 @@ class ContactsController < ApplicationController
   private
   def contact_params
     params.require(:announcement).permit(:user_id, :title, :body, :tag_list => [])
-  end
-  
-  def user_owns_contact?
-    @contact = Contact.find(params[:id])
-    if !user_validation(@contact)
-      flash[:alert]="You are not the owner of this contact!"
-      redirect_to user_path(current_user)
-    end
   end
 end

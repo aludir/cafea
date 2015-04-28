@@ -2,10 +2,10 @@
   <div class="col-md-10">
     
     <div class="row">
-    <div class="well col-md-4">
+    <div class="well col-md-6">
       By: <%= link_to @user.name+' '+@user.surname, user_path(@user) %>
       <br>
-      Tags: <% @announcement.tag_list.each do |t| %><%= link_to t, announcements_tag_path(t) %> <% end %>
+      Tags: <%= @announcement.tag_list.map {|x| (link_to x, announcements_tag_path(x))}.to_sentence(:last_word_connector => ', ', :two_words_connector => ', ').html_safe %>
       <br>
       Posted on: <%= @announcement.created_at.strftime("%Y-%m-%d") %>
       <br>

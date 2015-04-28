@@ -29,7 +29,7 @@
           <tr>
             <td><%= link_to announcement.title, announcement_path(announcement) %></td>
             <td><%= link_to announcement.user.name+' '+announcement.user.surname, user_path(announcement.user.uuid) %></td>
-            <td><% announcement.tag_list.each do |t| %><%= link_to t, announcements_tag_path(t) %> <% end %></td>
+            <td><%= announcement.tag_list.map {|x| (link_to x, announcements_tag_path(x))}.to_sentence(:last_word_connector => ', ', :two_words_connector => ', ').html_safe %></td>
             <td><%= announcement.created_at.strftime("%Y-%m-%d") %></td>
             <td><%= announcement.comments.count %></td>
           </tr>

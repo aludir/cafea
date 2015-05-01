@@ -1,0 +1,20 @@
+<div class="table-responsive">
+  <table class='table table-hover'>
+    <thead>
+      <tr>
+        <% headers.each do |h| %>
+          <th><%= h.titleize %></th>
+        <% end %>
+        <th></th>
+      </tr>
+    </thead>
+    <% resource.send(collection.pluralize).each do |r| %>
+      <tr>
+        <% columns.each do |c| %>
+      	  <td><%= r.send(c) %></td>
+        <% end %>
+        <td><%= link_to "Remove", eval("#{collection}_path(r)"), method: :delete if correct_user?(resource) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

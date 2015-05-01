@@ -4,7 +4,7 @@
   <li class="active"><a data-target="#personal" data-toggle="tab">Personal Info</a></li>
   <li><a data-target="#contact" data-toggle="tab">Contact</a></li>
   <li><a data-target="#professional" data-toggle="tab">Professional</a></li>
-  <li><a data-target="#education" data-toggle="tab">Education</a></li>
+  <li><a data-target="#educations" data-toggle="tab">Education</a></li>
   <li><a data-target="#interests" data-toggle="tab">Interests</a></li>
 </ul>
 
@@ -18,76 +18,17 @@
     <% if correct_user?(@user) %><%= link_to 'Edit', edit_user_registration_path, class: "btn btn-success" %><% end %>
   </div>
   <div class="tab-pane" id="professional">
-    <div class="table-responsive">
-      <table class='table table-hover'>
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>Function</th>
-            <th>Starting date</th>
-            <th>Ending date</th>
-            <th>Field</th>
-            <th></th>
-          </tr>
-        </thead>
-        <%@user.experiences.each do |x| %>
-      <tr>
-        <td><%= x.company %></td>
-        <td><%= x.title %></td>
-        <td><%= x.start_date %></td>
-        <td><%= x.end_date %></td>
-        <td><%= x.field_of_work %></td>
-        <td><% if correct_user?(@user) %><%= link_to "Remove", experience_path(x), method: :delete %><%end%></td>
-      </tr>
-    <%end%>
-  </table>
+  	<%= render partial: 'user_details', locals: {collection: 'experience', columns: ['company','title','start_date','end_date','field_of_work'],
+  		headers: ['company','title','started at','ended at','field of work'], resource: @user} %>
   </div>
-  </div>
-  <div class="tab-pane" id="education">
-    <div class="table-responsive">
-      <table class='table table-hover'>
-        <thead>
-          <tr>
-            <th>School</th>
-            <th>Grade</th>
-            <th>Starting date</th>
-            <th>Ending date</th>
-            <th>Field</th>
-            <th></th>
-          </tr>
-        </thead>
-        <%@user.educations.each do |e| %>
-      <tr>
-        <td><%= e.school %></td>
-        <td><%= e.grade %></td>
-        <td><%= e.start_date %></td>
-        <td><%= e.end_date %></td>
-        <td><%= e.field %></td>
-        <td><% if correct_user?(@user) %><%= link_to "Remove", education_path(e), method: :delete %><%end%></td>
-      </tr>
-    <%end%>
-  </table>
-  </div>
-  <div class="table-responsive">
-      <table class='table table-hover'>
-        <thead>
-          <tr>
-            <th>Language</th>
-            <th>Level</th>
-            <th></th>
-          </tr>
-        </thead>
-        <% @user.languages.each do |l| %>
-      <tr>
-        <td><%= l.name %></td>
-        <td><%= l.level %></td>
-        <td><% if correct_user?(@user) %><%= link_to "Remove", language_path(l), method: :delete %><%end%></td>
-      </tr>
-    <%end%>
-  </table>
+  <div class="tab-pane" id='educations' >
+  	<h2>Education</h2>
+  	<%= render partial: 'user_details', locals: {collection: 'education', columns: ['school','grade','start_date','end_date','field'],
+  		headers: ['school','grade','started at','ended at','field'], resource: @user} %>
+  	<h2>Languages</h2>
+  	<%= render partial: 'user_details', locals: {collection: 'language', columns: ['name','level'], headers: ['name','level'], resource: @user} %>
   </div>
   
-  </div>
   <div class="tab-pane" id="contact">
     <div class="table-responsive">
       <table class='table table-hover'>
@@ -101,35 +42,15 @@
         <tr>
           <td><a href='mailto:<%= @user.email %>'><%= @user.email%></td>
           <td>Primary e-mail</td>
-          <td><% if correct_user?(@user) %><%= link_to "Edit", edit_user_registration_path %><%end%></td>
+          <td><%= link_to "Edit", edit_user_registration_path if correct_user?(@user) %></td>
         </tr>
-        <% @user.contacts.each do |c| %>
-          <tr>
-            <td><a href='mailto:<%= c.content %>'><%= c.content %></a></td>
-            <td><%= c.description %></td>
-            <td><% if correct_user?(@user) %><%= link_to "Remove", contact_path(c), method: :delete, data: { confirm: 'Are you sure?' } %><%end%></td>
-          </tr>
-        <% end %>
-      </table>
+    </table>
     </div>
-    <div class="table-responsive">
-      <table class='table table-hover'>
-        <thead>
-          <tr>
-            <th>Address</th>
-            <th>Address type</th>
-            <th></th>
-          </tr>
-        </thead>
-        <% @user.addresses.each do |a| %>
-          <tr>
-            <td><%= a.street+' '+a.number+', '+a.city.name+', '+a.zip+', '+a.country.name %></td>
-            <td><%= a.description %></td>
-            <td><% if correct_user?(@user) %><%= link_to "Remove", address_path(a), method: :delete %><%end%></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
+  	<%= render partial: 'user_details', locals: {collection: 'contact', columns: ['content','description'],
+  		headers: ['email','description'], resource: @user} %>
+    
+    <%= render partial: 'user_details', locals: {collection: 'address', columns: ['full_address','description'],
+    	headers: ['address','description'], resource: @user} %>
   </div>
   <div class="tab-pane" id="interests">
     This user is part of the following interest groups:

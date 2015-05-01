@@ -18,6 +18,6 @@ module ApplicationHelper
   end
   
   def correct_user?(user)
-    user == current_user
+    user == current_user.id
   end
 end

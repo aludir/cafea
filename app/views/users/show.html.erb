@@ -19,38 +19,33 @@
   </div>
   <div class="tab-pane" id="professional">
   	<%= render partial: 'user_details', locals: {collection: 'experience', columns: ['company','title','start_date','end_date','field_of_work'],
-  		headers: ['company','title','started at','ended at','field of work'], resource: @user} %>
+  		headers: ['company','title','started at','ended at','field of work'], resource: @user.experiences} %>
   </div>
   <div class="tab-pane" id='educations' >
   	<h2>Education</h2>
   	<%= render partial: 'user_details', locals: {collection: 'education', columns: ['school','grade','start_date','end_date','field'],
-  		headers: ['school','grade','started at','ended at','field'], resource: @user} %>
+  		headers: ['school','grade','started at','ended at','field'], resource: @user.educations} %>
   	<h2>Languages</h2>
-  	<%= render partial: 'user_details', locals: {collection: 'language', columns: ['name','level'], headers: ['name','level'], resource: @user} %>
+  	<%= render partial: 'user_details', locals: {collection: 'language', columns: ['name','level'], headers: ['name','level'], resource: @user.languages} %>
   </div>
   
   <div class="tab-pane" id="contact">
-    <div class="table-responsive">
-      <table class='table table-hover'>
-        <thead>
-          <tr>
-            <th>E-mail</th>
-            <th>Type</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tr>
-          <td><a href='mailto:<%= @user.email %>'><%= @user.email%></td>
-          <td>Primary e-mail</td>
-          <td><%= link_to "Edit", edit_user_registration_path if correct_user?(@user) %></td>
-        </tr>
-    </table>
-    </div>
-  	<%= render partial: 'user_details', locals: {collection: 'contact', columns: ['content','description'],
-  		headers: ['email','description'], resource: @user} %>
+    <h2>E-mail</h2>
+  	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'email', columns: ['content','description'],
+  		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(1)} %>
+	<h2>Phones</h2>
+	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'phones',  columns: ['content','description'],
+  		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(2)} %>
+	<h2>Website</h2>
+	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'website',  columns: ['content','description'],
+  		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(3)} %>
+  	<h2>Skype</h2>
+  	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'skype',  columns: ['content','description'],
+  		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(4)} %>
+  	
     
     <%= render partial: 'user_details', locals: {collection: 'address', columns: ['full_address','description'],
-    	headers: ['address','description'], resource: @user} %>
+    	headers: ['address','description'], resource: @user.addresses} %>
   </div>
   <div class="tab-pane" id="interests">
     This user is part of the following interest groups:

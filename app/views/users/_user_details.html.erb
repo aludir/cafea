@@ -8,12 +8,19 @@
         <th></th>
       </tr>
     </thead>
-    <% resource.send(collection.pluralize).each do |r| %>
+    <% if collection == "contact" && subset == "email"%>
+      <tr>
+        <td><a href='mailto:<%= @user.email %>'><%= @user.email%></td>
+        <td>Primary e-mail</td>
+        <td><%= link_to "Edit", edit_user_registration_path if correct_user?(@user) %></td>
+      </tr>
+    <% end %>
+    <% resource.each do |r| %>
       <tr>
         <% columns.each do |c| %>
       	  <td><%= r.send(c) %></td>
         <% end %>
-        <td><%= link_to "Remove", eval("#{collection}_path(r)"), method: :delete if correct_user?(resource) %></td>
+        <td><%= link_to "Remove", eval("#{collection}_path(r)"), method: :delete if correct_user?(r.user_id) %></td>
       </tr>
     <% end %>
   </table>

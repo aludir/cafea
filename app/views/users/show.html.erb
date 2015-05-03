@@ -35,15 +35,14 @@
   		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(1)} %>
 	<h2>Phones</h2>
 	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'phones',  columns: ['content','description'],
-  		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(2)} %>
+  		headers: ['number','description'], resource: @user.contacts.find_all_by_category_id(2)} %>
 	<h2>Website</h2>
 	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'website',  columns: ['content','description'],
-  		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(3)} %>
+  		headers: ['url','description'], resource: @user.contacts.find_all_by_category_id(3)} %>
   	<h2>Skype</h2>
   	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'skype',  columns: ['content','description'],
-  		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(4)} %>
-  	
-    
+  		headers: ['id','description'], resource: @user.contacts.find_all_by_category_id(4)} %>
+    <h2>Addresses</h2>
     <%= render partial: 'user_details', locals: {collection: 'address', columns: ['full_address','description'],
     	headers: ['address','description'], resource: @user.addresses} %>
   </div>

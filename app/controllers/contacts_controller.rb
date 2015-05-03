@@ -5,13 +5,11 @@ class ContactsController < ApplicationController
   end
   
   def destroy
-    @contact.destroy
-    flash[:notice]="You removed this contact"
-    redirect_to user_path(current_user.uuid)
+    destroy_user_profile_resource(@resource)
   end
   
   private
   def contact_params
-    params.require(:announcement).permit(:user_id, :title, :body, :tag_list => [])
+    params.require(:contact).permit(:user_id, :content, :description, :category_id)
   end
 end

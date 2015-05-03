@@ -23,6 +23,12 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def destroy_user_profile_resource(resource)
+    resource.destroy
+    flash[:notice]="You removed this "+resource.class.name+"!"
+    redirect_to user_path(current_user.uuid)
+  end
+  
   def user_validation(resource)
     resource.user == current_user
   end

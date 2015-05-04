@@ -1,5 +1,5 @@
 <div class="row form-inline" id="new_experience">
-	<%= form_for @experience, url: experiences_path do |e| %>
+	<%= form_for Experience.new, url: experiences_path do |e| %>
 		<%= e.label 'title:' %><%= e.text_field :title, class: 'form-control' %>
 		<%= e.label 'company:' %><%= e.collection_select(:company_id, Company.all, :id, :name,{class: 'form-control'}) %>
 		<%= e.label 'start date:' %><%= e.text_field :start_date, class: 'form-control' %>

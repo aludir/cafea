@@ -1,6 +1,6 @@
 <div class="row form-inline" id="new_address">
-	<%= form_for @address, url: addresses_path do |a| %>
-		<%= a.label 'stret:' %><%= a.text_field :street, class: 'form-control' %>
+	<%= form_for Address.new, url: addresses_path do |a| %>
+		<%= a.label 'street:' %><%= a.text_field :street, class: 'form-control' %>
 		<%= a.label 'number:' %><%= a.text_field :number, class: 'form-control' %>
 		<%= a.label 'city:' %><%= a.collection_select(:city_id, City.all, :id, :name,{class: 'form-control'}) %>
 		<%= a.label 'zip:' %><%= a.text_field :zip, class: 'form-control' %>

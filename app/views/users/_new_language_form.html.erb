@@ -1,5 +1,5 @@
 <div class="row form-inline" id="new_language">
-	<%= form_for @language, url: languages_path do |l| %>
+	<%= form_for Language.new, url: languages_path do |l| %>
 		<%= l.label 'language:' %><%= l.text_field :name, class: 'form-control' %>
 		<%= l.label 'level:' %><%= l.text_field :level, class: 'form-control' %>
 		<button class='btn btn-danger cancel' type="button">Cancel</button>

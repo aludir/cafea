@@ -14,14 +14,6 @@ class UsersController < ApplicationController
     @user = User.find(:first, :conditions => ["uuid = ? ", params[:id]])
     @interests = @user.interests
     @own_interests = Interest.find(:all, :conditions => ["initiator = ? ", @user.id])
-    
-    @contact = Contact.new
-    @address = Address.new
-    @experience = Experience.new
-    @language = Language.new
-    @education = Education.new
-    
-    @categories = Category.all.map { |category| [category.name, category.id] }
   end
 
   private

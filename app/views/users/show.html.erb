@@ -30,21 +30,50 @@
   </div>
   
   <div class="tab-pane" id="contact">
-    <h2>E-mail</h2>
-  	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'email', columns: ['content','description'],
-  		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(1)} %>
-	<h2>Phones</h2>
-	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'phones',  columns: ['content','description'],
-  		headers: ['number','description'], resource: @user.contacts.find_all_by_category_id(2)} %>
-	<h2>Website</h2>
-	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'website',  columns: ['content','description'],
-  		headers: ['url','description'], resource: @user.contacts.find_all_by_category_id(3)} %>
-  	<h2>Skype</h2>
-  	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'skype',  columns: ['content','description'],
-  		headers: ['id','description'], resource: @user.contacts.find_all_by_category_id(4)} %>
-    <h2>Addresses</h2>
-    <%= render partial: 'user_details', locals: {collection: 'address', columns: ['full_address','description'],
-    	headers: ['address','description'], resource: @user.addresses} %>
+  	<div class="row">
+  		<div class="col-md-4">
+		    <h3>E-mail</h3>
+		  	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'email', columns: ['content','description'],
+		  		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(1)} %>
+  		</div>
+  		<div class="col-md-4">
+			<h3>Website</h3>
+			<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'website',  columns: ['content','description'],
+		  		headers: ['url','description'], resource: @user.contacts.find_all_by_category_id(3)} %>
+  		</div>
+  		<div class="col-md-4">
+  			<h3>Instant messaging</h3>
+		  	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'skype',  columns: ['content','description'],
+		  		headers: ['id','description'], resource: @user.contacts.find_all_by_category_id(4)} %>
+  		</div>
+	</div>
+	<%= render partial: 'new_contact_form' %>
+	<div class="row">
+		<div class="col-md-1 col-md-offset-5">
+			<button class="btn btn-success", id='add_new_contact'>Add new contact detail</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+		    <h3>Addresses</h3>
+		    <%= render partial: 'user_details', locals: {collection: 'address', columns: ['full_address','description'],
+		    	headers: ['address','description'], resource: @user.addresses} %>
+	    </div>
+	    <div class="col-md-4">
+			<h3>Phones</h3>
+			<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'phones',  columns: ['content','description'],
+	  			headers: ['number','description'], resource: @user.contacts.find_all_by_category_id(2)} %>
+		</div>
+    </div>
+    <div class="row" id="new_address">
+		<% form_for @address, url: new_address_path do |a| %>
+		<% end %>
+	</div>
+	<div class="row">
+		<div class="col-md-1 col-md-offset-5">
+			<button class="btn btn-success", id='add_new_address'>Add new address</button>
+		</div>
+	</div>
   </div>
   <div class="tab-pane" id="interests">
     This user is part of the following interest groups:

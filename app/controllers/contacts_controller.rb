@@ -3,15 +3,12 @@ class ContactsController < ApplicationController
   before_action only: [:edit, :destroy] do
     user_owns_resource?(Contact)
   end
+  before_action only: [:create] do
+    add_user_profile_resource(Contact,contact_params)
+  end
   
   def create
-    @contact = Contact.new(contact_params)
-    if @contact.save!
-      flash[:success]="You added new contact successfully!"
-    else
-     flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
-    end
-    redirect_to user_path(current_user.uuid)
+    
   end
   
   def destroy

@@ -23,6 +23,16 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def add_user_profile_resource(resource,params)
+    @resource = resource.new(params)
+    if @resource.save!
+      flash[:success]="You added new "+resource.class.name+" successfully!"
+    else
+     flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
+    end
+    redirect_to user_path(current_user.uuid)
+  end
+  
   def destroy_user_profile_resource(resource)
     resource.destroy
     flash[:notice]="You removed this "+resource.class.name+"!"

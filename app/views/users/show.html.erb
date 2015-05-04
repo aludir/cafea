@@ -22,12 +22,14 @@
   	<%= render partial: 'user_details', locals: {collection: 'experience', columns: ['company','title','start_date','end_date','field_of_work'],
   		headers: ['company','title','started at','ended at','field of work'], resource: @user.experiences} %>
 	</div>
-	<%= render partial: 'new_experience_form' %>
-	<div class="row">
-		<div class="col-md-1 col-md-offset-5">
-			<button class="btn btn-success", id='add_new_experience'>Add new experience</button>
+	<% if @user == current_user %>
+		<%= render partial: 'new_experience_form' %>
+		<div class="row">
+			<div class="col-md-1 col-md-offset-5">
+				<button class="btn btn-success", id='add_new_experience'>Add new experience</button>
+			</div>
 		</div>
-	</div>
+	<% end %>
   </div>
   <div class="tab-pane" id='educations' >
   	<div class="row">
@@ -35,22 +37,26 @@
   		<%= render partial: 'user_details', locals: {collection: 'education', columns: ['school','grade','start_date','end_date','field'],
   			headers: ['school','grade','started at','ended at','field'], resource: @user.educations} %>
 	</div>
-	<%= render partial: 'new_education_form' %>
-	<div class="row">
-		<div class="col-md-1 col-md-offset-5">
-			<button class="btn btn-success", id='add_new_education'>Add new education</button>
+	<% if @user == current_user %>
+		<%= render partial: 'new_education_form' %>
+		<div class="row">
+			<div class="col-md-1 col-md-offset-5">
+				<button class="btn btn-success", id='add_new_education'>Add new education</button>
+			</div>
 		</div>
-	</div>
+	<% end %>
 	<div class="row">
 	  	<h3>Languages</h3>
 	  	<%= render partial: 'user_details', locals: {collection: 'language', columns: ['name','level'], headers: ['name','level'], resource: @user.languages} %>
 	</div>
-	<%= render partial: 'new_language_form' %>
-	<div class="row">
-		<div class="col-md-1 col-md-offset-5">
-			<button class="btn btn-success", id='add_new_language'>Add new language</button>
+	<% if @user == current_user %>
+		<%= render partial: 'new_language_form' %>
+		<div class="row">
+			<div class="col-md-1 col-md-offset-5">
+				<button class="btn btn-success", id='add_new_language'>Add new language</button>
+			</div>
 		</div>
-	</div>
+	<% end %>
   </div>
   
   <div class="tab-pane" id="contact">
@@ -71,12 +77,14 @@
 		  		headers: ['id','description'], resource: @user.contacts.find_all_by_category_id(4)} %>
   		</div>
 	</div>
-	<%= render partial: 'new_contact_form' %>
-	<div class="row">
-		<div class="col-md-1 col-md-offset-5">
-			<button class="btn btn-success", id='add_new_contact'>Add new contact detail</button>
+	<% if @user == current_user %>
+		<%= render partial: 'new_contact_form' %>
+		<div class="row">
+			<div class="col-md-1 col-md-offset-5">
+				<button class="btn btn-success", id='add_new_contact'>Add new contact detail</button>
+			</div>
 		</div>
-	</div>
+	<% end %>
 	<div class="row">
 		<div class="col-md-8">
 		    <h3>Addresses</h3>
@@ -89,12 +97,14 @@
 	  			headers: ['number','description'], resource: @user.contacts.find_all_by_category_id(2)} %>
 		</div>
     </div>
-    <%= render partial: 'new_address_form'%>
-	<div class="row">
-		<div class="col-md-1 col-md-offset-5">
-			<button class="btn btn-success", id='add_new_address'>Add new address</button>
+    <% if @user == current_user %>
+	    <%= render partial: 'new_address_form'%>
+		<div class="row">
+			<div class="col-md-1 col-md-offset-5">
+				<button class="btn btn-success", id='add_new_address'>Add new address</button>
+			</div>
 		</div>
-	</div>
+	<% end %>
   </div>
   <div class="tab-pane" id="interests">
     This user is part of the following interest groups:

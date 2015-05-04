@@ -25,12 +25,17 @@ class ApplicationController < ActionController::Base
   
   def add_user_profile_resource(resource,params)
     @resource = resource.new(params)
-    if @resource.save!
-      flash[:success]="You added new "+resource.name+" successfully!"
+    if !user_validation(@resource)
+      flash[:alert]="You cannot add an "+resource.name+" in someone elses profile!"
+      redirect_to root_path
     else
-     flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
+      if @resource.save!
+        flash[:success]="You added new "+resource.name+" successfully!"
+      else
+       flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
+      end
+      redirect_to user_path(current_user.uuid)
     end
-    redirect_to user_path(current_user.uuid)
   end
   
   def destroy_user_profile_resource(resource)

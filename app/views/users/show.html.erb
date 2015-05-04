@@ -18,15 +18,39 @@
     <% if correct_user?(@user) %><%= link_to 'Edit', edit_user_registration_path, class: "btn btn-success" %><% end %>
   </div>
   <div class="tab-pane" id="professional">
+  	<div class="row">
   	<%= render partial: 'user_details', locals: {collection: 'experience', columns: ['company','title','start_date','end_date','field_of_work'],
   		headers: ['company','title','started at','ended at','field of work'], resource: @user.experiences} %>
+	</div>
+	<%= render partial: 'new_experience_form' %>
+	<div class="row">
+		<div class="col-md-1 col-md-offset-5">
+			<button class="btn btn-success", id='add_new_experience'>Add new experience</button>
+		</div>
+	</div>
   </div>
   <div class="tab-pane" id='educations' >
-  	<h2>Education</h2>
-  	<%= render partial: 'user_details', locals: {collection: 'education', columns: ['school','grade','start_date','end_date','field'],
-  		headers: ['school','grade','started at','ended at','field'], resource: @user.educations} %>
-  	<h2>Languages</h2>
-  	<%= render partial: 'user_details', locals: {collection: 'language', columns: ['name','level'], headers: ['name','level'], resource: @user.languages} %>
+  	<div class="row">
+  		<h3>Education</h3>
+  		<%= render partial: 'user_details', locals: {collection: 'education', columns: ['school','grade','start_date','end_date','field'],
+  			headers: ['school','grade','started at','ended at','field'], resource: @user.educations} %>
+	</div>
+	<%= render partial: 'new_education_form' %>
+	<div class="row">
+		<div class="col-md-1 col-md-offset-5">
+			<button class="btn btn-success", id='add_new_education'>Add new education</button>
+		</div>
+	</div>
+	<div class="row">
+	  	<h3>Languages</h3>
+	  	<%= render partial: 'user_details', locals: {collection: 'language', columns: ['name','level'], headers: ['name','level'], resource: @user.languages} %>
+	</div>
+	<%= render partial: 'new_language_form' %>
+	<div class="row">
+		<div class="col-md-1 col-md-offset-5">
+			<button class="btn btn-success", id='add_new_language'>Add new language</button>
+		</div>
+	</div>
   </div>
   
   <div class="tab-pane" id="contact">

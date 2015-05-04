@@ -17,6 +17,6 @@ class EducationsController < ApplicationController
   
   private
   def education_params
-    params.require(:address).permit(:user_id, :school, :start_date, :end_date, :field, :grade, :activities, :description)
+    params.require(:education).permit(:user_id, :school, :start_date, :end_date, :field, :grade, :activities, :description)
   end
 end

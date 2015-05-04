@@ -3,7 +3,7 @@
 		<%= c.label 'contact:' %><%= c.text_field :content, class: 'form-control' %>
 		<%= c.label 'description:' %><%= c.text_field :description, class: 'form-control' %>
 		<%= c.label 'type:' %><%= c.collection_select(:category_id, Category.all, :id, :name,{class: 'form-control'}) %>
-		<button class='btn btn-danger' type="button" id="cancel">Cancel</button>
+		<button class='btn btn-danger cancel' type="button">Cancel</button>
 		<%= c.hidden_field :user_id, {value: current_user.id}%>
 		<%= c.submit 'Add!', class: 'form-control btn btn-success'%>
 	<% end %>

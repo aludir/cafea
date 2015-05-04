@@ -7,7 +7,7 @@
 		<%= e.label 'grade:' %><%= e.text_field :grade, class: 'form-control' %>
 		<%= e.label 'activities:' %><%= e.text_field :activities, class: 'form-control' %>
 		<%= e.label 'description:' %><%= e.text_field :description, class: 'form-control' %>
-		<button class='btn btn-danger' type="button" id="cancel">Cancel</button>
+		<button class='btn btn-danger cancel' type="button">Cancel</button>
 		<%= e.hidden_field :user_id, {value: current_user.id}%>
 		<%= e.submit 'Add!', class: 'form-control btn btn-success'%>
 	<% end %>

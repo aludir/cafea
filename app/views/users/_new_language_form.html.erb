@@ -2,7 +2,7 @@
 	<%= form_for @language, url: languages_path do |l| %>
 		<%= l.label 'language:' %><%= l.text_field :name, class: 'form-control' %>
 		<%= l.label 'level:' %><%= l.text_field :level, class: 'form-control' %>
-		<button class='btn btn-danger' type="button" id="cancel">Cancel</button>
+		<button class='btn btn-danger cancel' type="button">Cancel</button>
 		<%= l.hidden_field :user_id, {value: current_user.id}%>
 		<%= l.submit 'Add!', class: 'form-control btn btn-success'%>
 	<% end %>

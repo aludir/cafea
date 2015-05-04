@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   def add_user_profile_resource(resource,params)
     @resource = resource.new(params)
     if @resource.save!
-      flash[:success]="You added new "+resource.class.name+" successfully!"
+      flash[:success]="You added new "+resource.name+" successfully!"
     else
      flash[:alert]="Something went wrong :( Please report this bug at admin@aludir.net"
     end

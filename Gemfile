@@ -22,6 +22,9 @@ gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
+# Datepicker form Bootstrap
+gem 'bootstrap-datepicker-rails' 
+
 # Using twitter's typeahead gem
 gem 'twitter-typeahead-rails'
 

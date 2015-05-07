@@ -1,6 +1,9 @@
 class Experience < ActiveRecord::Base
   belongs_to :user
-  belongs_to :country
   belongs_to :city
   belongs_to :company
+  
+  def country_name
+    Country.new(self.country_id)
+  end
 end

@@ -33,7 +33,7 @@ Category.delete_all
 Category.create(id: '1', name: 'E-mail')
 Category.create(id: '2', name: 'Phone')
 Category.create(id: '3', name: 'Website')
-Category.create(id: '4', name: 'Skype')
+Category.create(id: '4', name: 'Instant messaging')
             
 
 Contact.delete_all
@@ -48,13 +48,22 @@ Contact.create(user_id: '5', content:  'gianalfa@gmail.com', description: 'Perso
 Contact.create(user_id: '6', content:  'ida.lao@best.eu.org', description: 'BEST', category_id: '1')
 Contact.create(user_id: '7', content:  'zoltan@tribe.gr', description: 'Undercover', category_id: '1')
 Contact.create(user_id: '2', content:  'natsakis.anastasios@gmail.com', description: 'Not-in-use', category_id: '1')
-
-Country.delete_all
-Country.create(id: '1', name: 'Hikeland')
-Country.create(id: '2', name: 'Belgium')
-Country.create(id: '3', name: 'Greece')
-Country.create(id: '4', name: 'Romania')
-Country.create(id: '5', name: 'Discworld')
+Contact.create(user_id: '1', content:  '+3349223342', description: 'Personal', category_id: '2')
+Contact.create(user_id: '1', content:  '+30232345123', description: 'Work', category_id: '2')
+Contact.create(user_id: '2', content:  '+32499276382', description: 'Personal', category_id: '2')
+Contact.create(user_id: '3', content:  '+32453462346', description: 'Work', category_id: '2')
+Contact.create(user_id: '3', content:  '+21231234323', description: 'Personal', category_id: '2')
+Contact.create(user_id: '3', content:  '+332423554332', description: 'Start-up', category_id: '2')
+Contact.create(user_id: '4', content:  '+1254254353433', description: 'Personal', category_id: '2')
+Contact.create(user_id: '5', content:  '+3323455422', description: 'Personal', category_id: '2')
+Contact.create(user_id: '6', content:  '+43345123445', description: 'BEST', category_id: '2')
+Contact.create(user_id: '7', content:  '+033244313', description: 'Undercover', category_id: '2')
+Contact.create(user_id: '2', content:  '+44534243524', description: 'Not-in-use', category_id: '2')
+Contact.create(user_id: '1', content:  'www.cia.org', description: 'Personal', category_id: '3')
+Contact.create(user_id: '1', content:  'www.google.com', description: 'Personal', category_id: '3')
+Contact.create(user_id: '2', content:  'www.natsakis.com', description: 'Personal', category_id: '3')
+Contact.create(user_id: '3', content:  'www.aludir.net', description: 'Cool project', category_id: '3')
+Contact.create(user_id: '3', content:  'www.courseware.ro', description: 'Start-up', category_id: '3')
 
 City.delete_all
 City.create(id: '1', name: 'Hitchhike')
@@ -65,17 +74,17 @@ City.create(id: '5', name: 'Ankh-Morpork')
 
 Address.delete_all
 Address.create(user_id: '1', street: 'Streetstraat', number: '42', zip: '94610',
-               city_id: '1', country_id: '1', description: 'Home')
+               city_id: '1', country_id: 'GR', description: 'Home')
 Address.create(user_id: '2', street: 'Diestsestraat', number: '50', zip: '3000',
-               city_id: '2', country_id: '2', description: 'Home')
+               city_id: '2', country_id: 'US', description: 'Home')
 Address.create(user_id: '2', street: 'Pefkon', number: '3', zip: '56224',
-               city_id: '3', country_id: '3', description: 'Parents')
+               city_id: '3', country_id: 'BE', description: 'Parents')
 Address.create(user_id: '3', street: 'Diestsestraat', number: '50', zip: '3000',
-               city_id: '2', country_id: '2', description: 'Home')
+               city_id: '2', country_id: 'NL', description: 'Home')
 Address.create(user_id: '3', street: 'Somesului', number: '22', zip: '543345',
-               city_id: '4', country_id: '4', description: 'Parents')
+               city_id: '4', country_id: 'RO', description: 'Parents')
 Address.create(user_id: '3', street: 'Randomiac', number: '5', zip: '5545',
-               city_id: '5', country_id: '5', description: 'Dream')
+               city_id: '5', country_id: 'ES', description: 'Dream')
 
 Language.delete_all
 Language.create(user_id: '1', name: 'Bringlish', level: 'native')

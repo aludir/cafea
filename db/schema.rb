@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408073819) do
+ActiveRecord::Schema.define(version: 20150507115852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,9 +24,12 @@ ActiveRecord::Schema.define(version: 20150408073819) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "country_id"
+    t.string   "country_id"
     t.integer  "city_id"
   end
+
+  add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
+  add_index "addresses", ["country_id"], name: "index_addresses_on_country_id", using: :btree
 
   create_table "announcements", force: true do |t|
     t.integer  "user_id"
@@ -74,11 +77,7 @@ ActiveRecord::Schema.define(version: 20150408073819) do
     t.integer  "category_id"
   end
 
-  create_table "countries", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "contacts", ["category_id"], name: "index_contacts_on_category_id", using: :btree
 
   create_table "educations", force: true do |t|
     t.integer  "user_id"
@@ -102,10 +101,14 @@ ActiveRecord::Schema.define(version: 20150408073819) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "field_of_work"
-    t.integer  "country_id"
+    t.string   "country_id"
     t.integer  "city_id"
     t.integer  "company_id"
   end
+
+  add_index "experiences", ["city_id"], name: "index_experiences_on_city_id", using: :btree
+  add_index "experiences", ["company_id"], name: "index_experiences_on_company_id", using: :btree
+  add_index "experiences", ["country_id"], name: "index_experiences_on_country_id", using: :btree
 
   create_table "interests", force: true do |t|
     t.string   "title"

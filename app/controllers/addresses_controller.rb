@@ -14,8 +14,6 @@ class AddressesController < ApplicationController
   
   private 
   def address_params
-    params[:address][:country_id]=Country.find_or_create_by_name(params[:address][:country_id]).id
-    params[:address][:city_id]=City.find_or_create_by_name(params[:address][:city_id]).id
     params.require(:address).permit(:user_id, :street, :number, :city_id, :zip, :country_id, :description)
   end
 end

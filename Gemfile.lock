@@ -53,6 +53,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
+    countries (0.11.3)
+      currencies (~> 0.4.2)
+      i18n_data (~> 0.6.0)
+    currencies (0.4.2)
     debug_inspector (0.0.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
@@ -67,6 +71,7 @@ GEM
       railties (>= 3.2, < 5.0)
     hike (1.2.3)
     i18n (0.7.0)
+    i18n_data (0.6.3)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -186,6 +191,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  countries
   devise
   font-awesome-rails
   jbuilder (~> 1.2)

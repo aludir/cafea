@@ -46,6 +46,9 @@ gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Loading countries from gem
+gem 'countries'
+
 # Gem for dealing with tags
 gem 'acts-as-taggable-on'
 

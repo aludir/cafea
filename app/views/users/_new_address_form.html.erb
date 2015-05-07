@@ -1,11 +1,11 @@
 <div class="row form-inline" id="new_address">
 	<%= form_for Address.new, url: addresses_path do |a| %>
-		<%= a.label 'street:' %><%= a.text_field :street, class: 'form-control', size: 10 %>
-		<%= a.label 'number:' %><%= a.text_field :number, class: 'form-control', size: 1 %>
-		<%= a.label 'city:' %><%= a.collection_select(:city_id, City.all, :id, :name, {class: 'form-control'}) %>
-		<%= a.label 'zip:' %><%= a.text_field :zip, class: 'form-control', size: 5 %>
-		<%= a.label 'country:' %><%= a.collection_select(:country_id, Country.all, :id, :name,{class: 'form-control'}) %>
-		<%= a.label 'description:' %><%= a.text_field :description, class: 'form-control', size: 10 %>
+		<%= a.text_field :street, class: 'form-control', size: 10, placeholder: 'Street' %>
+		<%= a.text_field :number, class: 'form-control', size: 1, placeholder: 'No.' %>
+		<%= a.collection_select(:city_id, City.all, :id, :name, {class: 'form-control', placeholder: 'City'}) %>
+		<%= a.text_field :zip, class: 'form-control', size: 5, placeholder: 'Zip' %>
+		<%= a.collection_select(:country_id, Country.all, :id, :name,{class: 'form-control', placeholder: 'Country'}) %>
+		<%= a.text_field :description, class: 'form-control', size: 25, placeholder: 'Description (e.g. Home, Work etc.)' %>
 		<button class='btn btn-danger cancel' type="button">Cancel</button>
 		<%= a.hidden_field :user_id, {value: current_user.id}%>
 		<%= a.submit 'Add!', class: 'form-control btn btn-success'%>

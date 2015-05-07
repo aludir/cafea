@@ -1,12 +1,12 @@
 <div class="row form-inline" id="new_education">
 	<%= form_for Education.new, url: educations_path do |e| %>
-		<%= e.label 'school:' %><%= e.text_field :school, class: 'form-control' %>
-		<%= e.label 'start date:' %><%= e.text_field :start_date, class: 'form-control' %>
-		<%= e.label 'end date:' %><%= e.text_field :end_date, class: 'form-control' %>
-		<%= e.label 'field:' %><%= e.text_field :field, class: 'form-control' %>
-		<%= e.label 'grade:' %><%= e.text_field :grade, class: 'form-control' %>
-		<%= e.label 'activities:' %><%= e.text_field :activities, class: 'form-control' %>
-		<%= e.label 'description:' %><%= e.text_field :description, class: 'form-control' %>
+		<%= e.text_field :school, class: 'form-control', placeholder: 'School name', size: 7 %>
+		<%= e.text_field :start_date, class: 'form-control', placeholder: 'Start date', size: 3 %>
+		<%= e.text_field :end_date, class: 'form-control', placeholder: 'End date', size: 3 %>
+		<%= e.text_field :field, class: 'form-control', placeholder: 'Field (e.g. Mechanical engineering)' %>
+		<%= e.text_field :grade, class: 'form-control', placeholder: 'Grade', size: 1 %>
+		<%= e.text_field :activities, class: 'form-control', placeholder: 'Activities (e.g. BEST volunteer)' %>
+		<%= e.text_field :description, class: 'form-control', placeholder: 'Description (e.g. MSc, PhD etc.)' %>
 		<button class='btn btn-danger cancel' type="button">Cancel</button>
 		<%= e.hidden_field :user_id, {value: current_user.id}%>
 		<%= e.submit 'Add!', class: 'form-control btn btn-success'%>

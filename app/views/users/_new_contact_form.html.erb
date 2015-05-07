@@ -1,8 +1,8 @@
 <div class="row form-inline" id="new_contact">
 	<%= form_for Contact.new, url: contacts_path do |c| %>
-		<%= c.label 'contact:' %><%= c.text_field :content, class: 'form-control', size: 10 %>
-		<%= c.label 'description:' %><%= c.text_field :description, class: 'form-control', size: 10 %>
-		<%= c.label 'type:' %><%= c.collection_select(:category_id, Category.all, :id, :name,{class: 'form-control'}) %>
+		<%= c.text_field :content, class: 'form-control', size: 10, placeholder: 'Contact' %>
+		<%= c.text_field :description, class: 'form-control', size: 25, placeholder: 'Description (e.g. Personal, Work, Abroad etc.)' %>
+		<%= c.collection_select(:category_id, Category.all, :id, :name,{class: 'form-control'}, placeholder: 'Type') %>
 		<button class='btn btn-danger cancel' type="button">Cancel</button>
 		<%= c.hidden_field :user_id, {value: current_user.id}%>
 		<%= c.submit 'Add!', class: 'form-control btn btn-success'%>

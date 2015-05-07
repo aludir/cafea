@@ -57,4 +57,10 @@ $(document).ready ->
     #Form shows on button click
     return
   )
+  $("#address_city_id").select2()
+  $("#address_country_id").select2()
+  $("#contact_category_id").select2()
+  $("#experience_company_id").select2()
+  $("#experience_city_id").select2()
+  $("#experience_country_id").select2()
   return

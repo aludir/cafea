@@ -1,8 +1,8 @@
 <div class="row form-inline" id="new_experience">
 	<%= form_for Experience.new, url: experiences_path do |e| %>
-		<%= e.label 'title:' %><%= e.text_field :title, class: 'form-control' %>
+		<%= e.label 'title:' %><%= e.text_field :title, class: 'form-control', size: 10 %>
 		<%= e.label 'company:' %><%= e.collection_select(:company_id, Company.all, :id, :name,{class: 'form-control'}) %>
-		<%= e.label 'start date:' %><%= e.text_field :start_date, class: 'form-control' %>
+		<%= e.label 'start date:' %><%= e.text_field :start_date, class: 'form-control', 'data-provider' => 'datepicker' %>
 		<%= e.label 'end date:' %><%= e.text_field :end_date, class: 'form-control' %>
 		<%= e.label 'field of work:' %><%= e.text_field :field_of_work, class: 'form-control' %>
 		<%= e.label 'city:' %><%= e.collection_select(:city_id, City.all, :id, :name,{class: 'form-control'}) %>

@@ -14,6 +14,7 @@ class AddressesController < ApplicationController
   
   private 
   def address_params
+    params[:address][:city_id] = City.all.find_or_create_by_name(params[:address][:city_id]).id
     params.require(:address).permit(:user_id, :street, :number, :city_id, :zip, :country_id, :description)
   end
 end

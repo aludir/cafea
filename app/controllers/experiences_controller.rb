@@ -17,6 +17,8 @@ class ExperiencesController < ApplicationController
   
   private
   def experience_params
-    params.require(:experience).permit(:user_id, :start_date, :end_date, :field_of_work, :description, :country_id, :city_id, :company_id)
+    params[:experience][:company_id] = Company.all.find_or_create_by_name(params[:experience][:company_id]).id
+    params[:experience][:city_id] = City.all.find_or_create_by_name(params[:experience][:city_id]).id
+    params.require(:experience).permit(:user_id, :start_date, :title, :end_date, :field_of_work, :description, :country_id, :city_id, :company_id)
   end
 end

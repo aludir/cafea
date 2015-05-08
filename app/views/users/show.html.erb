@@ -19,7 +19,7 @@
   </div>
   <div class="tab-pane" id="professional">
   	<div class="row">
-  	<%= render partial: 'user_details', locals: {collection: 'experience', columns: ['company','title','country_name','start_date','end_date','field_of_work'],
+  	<%= render partial: 'user_details', locals: {collection: 'experience', columns: ['company_name','title','country_name','start_date','end_date','field_of_work'],
   		headers: ['company','title','country','started at','ended at','field of work'], resource: @user.experiences} %>
 	</div>
 	<% if @user == current_user %>

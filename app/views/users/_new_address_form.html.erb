@@ -2,7 +2,7 @@
 	<%= form_for Address.new, url: addresses_path do |a| %>
 		<%= a.text_field :street, class: 'form-control', size: 10, placeholder: 'Street' %>
 		<%= a.text_field :number, class: 'form-control', size: 1, placeholder: 'No.' %>
-		<%= a.collection_select(:city_id, City.all, :id, :name, {class: 'form-control', placeholder: 'City'}) %>
+		<%= a.text_field :city_id, class: 'form-control', placeholder: 'City', style: 'width: 20%' %>
 		<%= a.text_field :zip, class: 'form-control', size: 5, placeholder: 'Zip' %>
 		<%= a.select(:country_id, options_for_select(Country.all),{value: nil, class: 'form-control', placeholder: 'Country'}) %>
 		<%= a.text_field :description, class: 'form-control', size: 25, placeholder: 'Description (e.g. Home, Work etc.)' %>

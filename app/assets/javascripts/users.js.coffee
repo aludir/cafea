@@ -57,11 +57,23 @@ $(document).ready ->
     #Form shows on button click
     return
   )
-  $("#address_city_id").select2()
+  $("#address_city_id").select2({
+    tags: cities,
+    maximumSelectionSize: 1
+  })
   $("#address_country_id").select2()
   $("#contact_category_id").select2()
-  $("#language_name").select2()
-  $("#experience_company_id").select2()
-  $("#experience_city_id").select2()
+  $("#language_name").select2({
+  	tags: languages,
+  	maximumSelectionSize: 1
+  })
+  $("#experience_company_id").select2({
+  	tags: companies,
+  	maximumSelectionSize: 1
+  })
+  $("#experience_city_id").select2({
+  	tags: cities,
+  	maximumSelectionSize: 1
+  })
   $("#experience_country_id").select2()
   return

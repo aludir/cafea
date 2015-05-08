@@ -1,6 +1,6 @@
 <div class="row form-inline" id="new_language">
 	<%= form_for Language.new, url: languages_path do |l| %>
-		<%= l.collection_select(:name, Language.all, :name, :name, {class: 'form-control', placeholder: 'Language'}) %>
+		<%= l.text_field :name, class: 'form-control', placeholder: 'Language', style: 'width: 20%'%>
 		<%= l.number_field :level, {value: nil, min: 0, max: 5, class: 'form-control', size: 1, placeholder: 'Level from 0 to 5'} %>
 		<button class='btn btn-danger cancel' type="button">Cancel</button>
 		<%= l.hidden_field :user_id, {value: current_user.id}%>

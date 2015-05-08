@@ -122,3 +122,9 @@
   </div>
 </div>
 
+<script>
+	var cities = [<% City.all.each do |c| %>"<%= c.name %>",<% end %>];
+	var companies = [<% Company.all.each do |c| %>"<%= c.name %>",<% end %>];
+	var languages = [<% Language.all.each do |l| %>"<%= l.name %>",<% end %>];
+</script>
+

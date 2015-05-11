@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @gender_map = [nil, "Male","Female","Other"];
   end
 
   # GET /users/1

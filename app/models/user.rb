@@ -16,4 +16,35 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :surname, presence: true
   validates :birth_date, presence: true
+  
+  def age
+    (Date.today - self.birth_date).to_i / 365
+  end
+  
+  def country
+    @countries = Array.new
+    @addresses = Address.all(:conditions => ["user_id = ? ", self.id])
+    @addresses.each do |a|
+      @countries << Country.new(a.country_id).name
+    end
+    @countries.to_sentence
+  end
+  
+  def field
+    @fields = Array.new
+    @experiences = Experience.all(:conditions => ["user_id = ? ", self.id])
+    @experiences.each do |e|
+      @fields << e.field_of_work
+    end
+    @fields.to_sentence
+  end
+  
+  def company
+    @companies = Array.new
+    @experiences = Experience.all(:conditions => ["user_id = ? ", self.id])
+    @experiences.each do |e|
+      @companies << e.company.name
+    end
+    @companies.to_sentence
+  end
 end

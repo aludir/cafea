@@ -1,11 +1,14 @@
-<h1>Listing users</h1>
+<h1>Listing members</h1>
 
-<table>
+<table class="table table-hover table-striped">
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Full name</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Countries</th>
+      <th>Field of work</th>
+      <th>Company</th>
     </tr>
   </thead>
 
@@ -13,9 +16,11 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.name + ' ' + user.surname, "/users/#{user.uuid}" %></td>
-        <% if user.id == current_user.id %>
-          <td><%= link_to 'Edit', edit_user_registration_path %></td>
-        <%end%>
+        <td><%= @gender_map[user.gender] %></td>
+        <td><%= user.age %></td>
+        <td><%= user.country %></td>
+        <td><%= user.field %></td>
+        <td><%= user.company %></td>
       </tr>
     <% end %>
   </tbody>

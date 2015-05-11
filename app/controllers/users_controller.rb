@@ -13,5 +13,6 @@ class UsersController < ApplicationController
     @user = User.find(:first, :conditions => ["uuid = ? ", params[:id]])
     @interests = @user.interests
     @own_interests = Interest.all(:conditions => ["initiator = ? ", @user.id])
+    @gender_map = [nil, "Male","Female","Other"];
   end
 end

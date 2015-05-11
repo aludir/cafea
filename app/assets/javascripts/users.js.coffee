@@ -79,6 +79,7 @@ $(document).ready ->
     #Form shows on button click
     return
   )
+  $(".select2_dropdown").select2()
   $("#address_city_id").select2({
     tags: cities,
     maximumSelectionSize: 1

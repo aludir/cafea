@@ -13,6 +13,9 @@
       
       <div class="field"><%= f.label :surname %><br>
         <%= f.text_field :surname, class: 'form-control' %></div><br/>
+        
+      <div class="field"><%= f.label :gender %><br>
+        <%= f.select :gender, options_for_select([[nil, 0],['male', 1],['female', 2],['other',3]]), class: 'form-control' %></div><br/>
       
       <div class="field"><%= f.label :old_surname %><br>
         <%= f.text_field :old_surname, class: 'form-control' %></div><br/>

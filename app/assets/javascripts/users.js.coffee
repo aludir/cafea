@@ -3,6 +3,22 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
+  # The next function is thanks to Raphael!
+  # https://gist.github.com/raphaelescoyez/8c24c50ebb3740a779a7
+  $('.confirmation').keyup ->
+    confirmation = $('.confirmation').val()
+    if confirmation == 'I want to delete my account!'
+      $('.cancel_account').removeAttr 'disabled'
+    else
+      $('.cancel_account').attr 'disabled', 'disabled'
+    return
+  $('.password').keyup ->
+    confirmation = $('.password').val()
+    if confirmation != ''
+      $('.password_confirm').removeAttr 'hidden'
+    else
+      $('.password_confirm').attr 'hidden', 'true'
+    return
   $(".generic_date_picker").datepicker({
   	format: "yyyy-mm-dd",
   	weekStart: 1

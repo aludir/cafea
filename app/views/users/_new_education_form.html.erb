@@ -1,8 +1,8 @@
 <div class="row form-inline" id="new_education">
 	<%= form_for Education.new, url: educations_path do |e| %>
 		<%= e.text_field :school, class: 'form-control', placeholder: 'School name', size: 7 %>
-		<%= e.text_field :start_date, class: 'form-control', placeholder: 'Start date', size: 3 %>
-		<%= e.text_field :end_date, class: 'form-control', placeholder: 'End date', size: 3 %>
+		<%= e.text_field :start_date, class: 'form-control generic_date_picker', placeholder: 'Start date', size: 3, 'data-provider' => 'datepicker' %>
+		<%= e.text_field :end_date, class: 'form-control generic_date_picker', placeholder: 'End date', size: 3, 'data-provider' => 'datepicker' %>
 		<%= e.text_field :field, class: 'form-control', placeholder: 'Field (e.g. Mechanical engineering)' %>
 		<%= e.text_field :grade, class: 'form-control', placeholder: 'Grade', size: 1 %>
 		<%= e.text_field :activities, class: 'form-control', placeholder: 'Activities (e.g. BEST volunteer)' %>

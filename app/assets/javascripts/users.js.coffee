@@ -3,6 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
+  $(".generic_date_picker").datepicker({
+  	format: "yyyy-mm-dd",
+  	weekStart: 1
+  	startView: 2,
+  	autoclose: true
+  })
   $('#new_contact').hide()
   #Initially form wil be hidden.
   $('#add_new_contact').click(->

@@ -2,8 +2,8 @@
 	<%= form_for Experience.new, url: experiences_path do |e| %>
 		<%= e.text_field :title, class: 'form-control', size: 10, placeholder: 'Title (e.g. Project manager)' %>
 		<%= e.text_field :company_id, class: 'form-control', placeholder: 'Company', style: 'width: 20%' %>
-		<%= e.text_field :start_date, class: 'form-control', 'data-provider' => 'datepicker', placeholder: 'Start date' %>
-		<%= e.text_field :end_date, class: 'form-control', 'data-provider' => 'datepicker', placeholder: 'End date'%>
+		<%= e.text_field :start_date, class: 'form-control generic_date_picker', 'data-provider' => 'datepicker', placeholder: 'Start date' %>
+		<%= e.text_field :end_date, class: 'form-control generic_date_picker', 'data-provider' => 'datepicker', placeholder: 'End date' %>
 		<%= e.text_field :field_of_work, class: 'form-control', placeholder: 'Field' %>
 		<%= e.text_field :city_id, class: 'form-control', placeholder: 'City', style: 'width: 20%' %>
 		<%= e.select(:country_id, options_for_select(Country.all), {class: 'form-control', placeholder: 'Country'}) %>

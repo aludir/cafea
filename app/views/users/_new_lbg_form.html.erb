@@ -1,0 +1,8 @@
+<div class="row form-inline" id="new_language">
+	<%= form_for Lbg.new, url: join_lbg_path do |l| %>
+		<%= l.collection_select(:id, Lbg.all, :id, :name, {class: 'form-control', placeholder: 'LBG'}) %>
+		<button class='btn btn-danger cancel' type="button">Cancel</button>
+		<%= l.hidden_field :user_id, {value: current_user.id}%>
+		<%= l.submit 'Add!', class: 'form-control btn btn-success'%>
+	<% end %>
+</div>

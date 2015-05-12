@@ -2,6 +2,7 @@
 
 <ul class="nav nav-tabs" id="myTab">
   <li class="active"><a data-target="#personal" data-toggle="tab">Personal Info</a></li>
+  <li><a data-target="#best_related" data-toggle="tab">BEST</a></li>
   <li><a data-target="#contact" data-toggle="tab">Contact</a></li>
   <li><a data-target="#professional" data-toggle="tab">Professional</a></li>
   <li><a data-target="#educations" data-toggle="tab">Education</a></li>
@@ -31,6 +32,7 @@
 		</div>
 	<% end %>
   </div>
+  
   <div class="tab-pane" id='educations' >
   	<div class="row">
   		<h3>Education</h3>
@@ -57,6 +59,21 @@
 			</div>
 		</div>
 	<% end %>
+  </div>
+  
+  <div class="tab-pane" id='best_related'>
+  	<div class="row">
+  	  <%= render partial: 'user_details', locals: {collection: 'lbg', columns: ['name'],
+	  			headers: ['Local BEST group'], resource: @user.lbgs} %>
+  	</div>
+  	<% if @user == current_user %>
+	  <%= render partial: 'new_lbg_form' %>
+      <div class="row">
+        <div class="col-md-1 col-md-offset-5">
+		  <button class="btn btn-success", id='add_new_lbg'>Add new LBG</button>
+	    </div>
+	  </div>
+    <% end %>
   </div>
   
   <div class="tab-pane" id="contact">

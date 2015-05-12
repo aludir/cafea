@@ -26,7 +26,7 @@ $(document).ready ->
   	autoclose: true
   })
   $('#new_contact').hide()
-  #Initially form wil be hidden.
+  #Initially form will be hidden.
   $('#add_new_contact').click(->
     $('#new_contact').show()
     $('#add_new_contact').hide()
@@ -34,7 +34,7 @@ $(document).ready ->
     return
   )
   $('#new_address').hide()
-  #Initially form wil be hidden.
+  #Initially form will be hidden.
   $('#add_new_address').click(->
     $('#new_address').show()
     $('#add_new_address').hide()
@@ -42,7 +42,7 @@ $(document).ready ->
     return
   )
   $('#new_education').hide()
-  #Initially form wil be hidden.
+  #Initially form will be hidden.
   $('#add_new_education').click(->
     $('#new_education').show()
     $('#add_new_education').hide()
@@ -50,7 +50,7 @@ $(document).ready ->
     return
   )
   $('#new_language').hide()
-  #Initially form wil be hidden.
+  #Initially form will be hidden.
   $('#add_new_language').click(->
     $('#new_language').show()
     $('#add_new_language').hide()
@@ -58,10 +58,18 @@ $(document).ready ->
     return
   )
   $('#new_experience').hide()
-  #Initially form wil be hidden.
+  #Initially form will be hidden.
   $('#add_new_experience').click(->
     $('#new_experience').show()
     $('#add_new_experience').hide()
+    #Form shows on button click
+    return
+  )
+  $('#new_lbg').hide()
+  #Initially form will be hidden.
+  $('#add_new_lbg').click(->
+    $('#new_lbg').show()
+    $('#add_new_lbg').hide()
     #Form shows on button click
     return
   )
@@ -71,15 +79,17 @@ $(document).ready ->
     $('#add_new_education').show()
     $('#add_new_language').show()
     $('#add_new_experience').show()
+    $('#add_new_lbg').show()
     $('#new_contact').hide()
     $('#new_address').hide()
     $('#new_education').hide()
     $('#new_language').hide()
     $('#new_experience').hide()
+    $('#new_lbg').hide()
     #Form shows on button click
     return
   )
-  $(".select2_dropdown").select2()
+  $("#lbg_id").select2()
   $("#address_city_id").select2({
     tags: cities,
     maximumSelectionSize: 1

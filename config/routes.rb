@@ -9,6 +9,9 @@ AluDir::Application.routes.draw do
   resources :interests
   post 'interest/:id/join', to: 'interests#join', as: 'join_interest'
   post 'interest/:id/leave', to: 'interests#leave', as: 'leave_interest'
+  resources :lbgs
+  post 'lbg/:id/join', to: 'lbgs#join', as: 'join_lbg'
+  post 'lbg/:id/leave', to: 'lbgs#leave', as: 'leave_lbg'
 
   resources :users, only: [:index, :show]
   resources :announcements
@@ -20,6 +23,7 @@ AluDir::Application.routes.draw do
   resources :languages, except: [:index, :show]
   resources :educations, except: [:index, :show]
   resources :experiences, except: [:index, :show]
+  resources :lbgs, except: [:index, :show]
     
   post 'comment', to: 'announcements#add_comment', as: 'add_comment'
   delete 'comment/:id', to: 'announcements#del_comment', as: 'del_comment'

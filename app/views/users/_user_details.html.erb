@@ -26,7 +26,13 @@
       	    <td><%= r.send(c) %></td>
       	  <% end %>
         <% end %>
-        <td><%= link_to "Remove", eval("#{collection}_path(r)"), method: :delete if correct_user?(r.user_id) %></td>
+        <td>
+          <% if collection == "lbg" %>
+            <%= link_to "Remove", leave_lbg_path(r), method: :post %>
+          <% else %>
+	        <%= link_to "Remove", eval("#{collection}_path(r)"), method: :delete if correct_user?(r.user_id) %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>

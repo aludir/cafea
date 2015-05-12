@@ -37,6 +37,12 @@
 		    <%= f.label :nickname %><br>
 		    <%= f.text_field :nickname, class: 'form-control'  %>
 		  </div>
+		  
+		  <div class="field">
+		  	<%= f.label :primary_lbg %><br>
+		  	<%= f.text_field :lbg_id, class: 'form-control'%>
+		  </div>
+		  
 		  <div class="field">
 		    <%= f.label :birth_date %><br>
 		    <%= f.text_field :birth_date, class: 'form-control generic_date_picker', 'data-provider' => 'datepicker' %>

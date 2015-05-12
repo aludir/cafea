@@ -10,7 +10,7 @@
     </thead>
     <% if collection == "contact" && subset == "email"%>
       <tr>
-        <td><a href='mailto:<%= @user.email %>'><%= @user.email%></td>
+        <td><%= mail_to @user.email %></td>
         <td>Primary e-mail</td>
         <td><%= link_to "Edit", edit_user_registration_path if correct_user?(@user) %></td>
       </tr>
@@ -18,7 +18,13 @@
     <% resource.each do |r| %>
       <tr>
         <% columns.each do |c| %>
-      	  <td><%= r.send(c) %></td>
+          <% if collection == "contact" && subset == "email" && c == "content" %>
+            <td><%= mail_to r.send(c) %></td>
+          <% elsif collection == "contact" && subset == "website" && c == "content" %>
+            <td><%= link_to r.send(c), r.send(c) %></td>
+          <% else %>
+      	    <td><%= r.send(c) %></td>
+      	  <% end %>
         <% end %>
         <td><%= link_to "Remove", eval("#{collection}_path(r)"), method: :delete if correct_user?(r.user_id) %></td>
       </tr>

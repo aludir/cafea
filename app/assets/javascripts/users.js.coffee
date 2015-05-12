@@ -90,6 +90,7 @@ $(document).ready ->
     return
   )
   $("#lbg_id").select2()
+  $("#user_gender").select2()
   $("#address_city_id").select2({
     tags: cities,
     maximumSelectionSize: 1

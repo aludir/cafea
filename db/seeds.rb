@@ -8,25 +8,25 @@
 
 User.delete_all
 User.create(id: '1', email: 'john.doe@email.com', password: 'password',
-            password_confirmation: 'password', name: 'John', surname: 'Doe',
+            password_confirmation: 'password', gender: 1, name: 'John', surname: 'Doe',
             birth_date: Time.now, uuid: SecureRandom.hex(n=6))
-User.create(id: '2', email: 'tassos@natsakis.com', password: 'password',
-            password_confirmation: 'password', name: 'Tassos', surname: 'Natsakis',
+User.create(id: '2', email: 'tassos@hise-mail.com', password: 'password',
+            password_confirmation: 'password', gender: 1, name: 'Tassos', surname: 'Natsakis',
             birth_date: Time.gm(1985,5,30), uuid: SecureRandom.hex(n=6))
-User.create(id: '3',  email: 'oanasipos@gmail.com', password: 'password',
-            password_confirmation: 'password', name: 'Oana', surname: 'Sipos',
+User.create(id: '3',  email: 'oanasipos@her-email.com', password: 'password',
+            password_confirmation: 'password', gender: 2, name: 'Oana', surname: 'Sipos',
             birth_date: Time.gm(1985,03,7), uuid: SecureRandom.hex(n=6))
-User.create(id: '4',  email: 'filip.kis@gmail.com', password: 'password',
-            password_confirmation: 'password', name: 'Filip', surname: 'Kis',
+User.create(id: '4',  email: 'filip@his-email.com', password: 'password',
+            password_confirmation: 'password', gender: 1, name: 'Filip', surname: 'Kis',
             birth_date: Time.gm(1988,8,17), uuid: SecureRandom.hex(n=6))
-User.create(id: '5',  email: 'giovanni@gmail.com', password: 'password',
-            password_confirmation: 'password', name: 'Giovanni Alfredo', surname: 'Camoralli',
+User.create(id: '5',  email: 'giovanni@ice-cream.com', password: 'password',
+            password_confirmation: 'password', gender: 1 , name: 'Giovanni Alfredo', surname: 'Camoralli',
             birth_date: Time.gm(1972,3,17), uuid: SecureRandom.hex(n=6))
-User.create(id: '6',  email: 'ida.lao@gmail.com', password: 'password',
-            password_confirmation: 'password', name: 'Ida Lau', surname: 'Borch',
+User.create(id: '6',  email: 'ida@very-old.com', password: 'password',
+            password_confirmation: 'password', gender: 2, name: 'Ida Lau', surname: 'Borch',
             birth_date: Time.gm(1966,4,30), uuid: SecureRandom.hex(n=6))
 User.create(id: '7',  email: 'zoltan@zoltan.com', password: 'password',
-            password_confirmation: 'password', name: 'Zoltan', surname: 'Bartalis',
+            password_confirmation: 'password', gender: 1, name: 'Zoltan', surname: 'Bartalis',
             birth_date: Time.gm(1988,8,17), uuid: SecureRandom.hex(n=6))
             
 Category.delete_all
@@ -39,15 +39,14 @@ Category.create(id: '4', name: 'Instant messaging')
 Contact.delete_all
 Contact.create(user_id: '1', content:  'john.doe@email.com', description: 'Personal', category_id: '1')
 Contact.create(user_id: '1', content:  'john.doe@work.com', description: 'Work', category_id: '1')
-Contact.create(user_id: '2', content:  'tassos@natsakis.com', description: 'Personal', category_id: '1')
-Contact.create(user_id: '3', content:  'oanasipos@up-nxt.be', description: 'Work', category_id: '1')
-Contact.create(user_id: '3', content:  'oanasipos@gmail.com', description: 'Personal', category_id: '1')
-Contact.create(user_id: '3', content:  'oanasipos@courseware.ro', description: 'Start-up', category_id: '1')
-Contact.create(user_id: '4', content:  'filip.kis@gmail.com', description: 'Personal', category_id: '1')
-Contact.create(user_id: '5', content:  'gianalfa@gmail.com', description: 'Personal', category_id: '1')
-Contact.create(user_id: '6', content:  'ida.lao@best.eu.org', description: 'BEST', category_id: '1')
+Contact.create(user_id: '3', content:  'oanasipos@oanasipos.be', description: 'Work', category_id: '1')
+Contact.create(user_id: '3', content:  'oana@gmailexecutives.com', description: 'Personal', category_id: '1')
+Contact.create(user_id: '3', content:  'oana@ambassador.ro', description: 'Start-up', category_id: '1')
+Contact.create(user_id: '4', content:  'filip@kakamaka.com', description: 'Personal', category_id: '1')
+Contact.create(user_id: '5', content:  'gianA@alpha.com', description: 'Personal', category_id: '1')
+Contact.create(user_id: '6', content:  'ida@best.eu.borg', description: 'BEST', category_id: '1')
 Contact.create(user_id: '7', content:  'zoltan@tribe.gr', description: 'Undercover', category_id: '1')
-Contact.create(user_id: '2', content:  'natsakis.anastasios@gmail.com', description: 'Not-in-use', category_id: '1')
+Contact.create(user_id: '2', content:  'natsakis@gmail.com', description: 'Not-in-use', category_id: '1')
 Contact.create(user_id: '1', content:  '+3349223342', description: 'Personal', category_id: '2')
 Contact.create(user_id: '1', content:  '+30232345123', description: 'Work', category_id: '2')
 Contact.create(user_id: '2', content:  '+32499276382', description: 'Personal', category_id: '2')
@@ -75,14 +74,14 @@ City.create(id: '5', name: 'Ankh-Morpork')
 Address.delete_all
 Address.create(user_id: '1', street: 'Streetstraat', number: '42', zip: '94610',
                city_id: '1', country_id: 'GR', description: 'Home')
-Address.create(user_id: '2', street: 'Diestsestraat', number: '50', zip: '3000',
+Address.create(user_id: '2', street: 'Diestsetsestraat', number: '50', zip: '3000',
                city_id: '2', country_id: 'US', description: 'Home')
-Address.create(user_id: '2', street: 'Pefkon', number: '3', zip: '56224',
+Address.create(user_id: '2', street: 'Doxas', number: '3', zip: '52324',
                city_id: '3', country_id: 'BE', description: 'Parents')
-Address.create(user_id: '3', street: 'Diestsestraat', number: '50', zip: '3000',
+Address.create(user_id: '3', street: 'Bloemstraat', number: '50', zip: '6660',
                city_id: '2', country_id: 'NL', description: 'Home')
-Address.create(user_id: '3', street: 'Somesului', number: '22', zip: '543345',
-               city_id: '4', country_id: 'RO', description: 'Parents')
+Address.create(user_id: '3', street: 'Somesip', number: '22', zip: '543345',
+               city_id: '4', country_id: 'JP', description: 'Parents')
 Address.create(user_id: '3', street: 'Randomiac', number: '5', zip: '5545',
                city_id: '5', country_id: 'ES', description: 'Dream')
 
@@ -107,7 +106,96 @@ Education.create(user_id: '1', school: 'primary', start_date: Time.now,
                  end_date: Time.now, field: 'hitchikereeing', grade: '1')
 
 Lbg.delete_all
-Lbg.create(id: '1', name: 'iamtheBEST')
+Lbg.create(name: 'Aalborg')
+Lbg.create(name: 'Almada')
+Lbg.create(name: 'Ankara')
+Lbg.create(name: 'Athens')
+Lbg.create(name: 'Aveiro')
+Lbg.create(name: 'Barcelona')
+Lbg.create(name: 'Belgrade')
+Lbg.create(name: 'Brasov')
+Lbg.create(name: 'Bratislava')
+Lbg.create(name: 'Brno')
+Lbg.create(name: 'Brussels')
+Lbg.create(name: 'Brussels ULB')
+Lbg.create(name: 'Bucharest')
+Lbg.create(name: 'Budapest')
+Lbg.create(name: 'Chania')
+Lbg.create(name: 'Chisinau')
+Lbg.create(name: 'Cluj-Napoca')
+Lbg.create(name: 'Coimbra')
+Lbg.create(name: 'Copenhagen')
+Lbg.create(name: 'Delft')
+Lbg.create(name: 'Ekaterinburg UrFU')
+Lbg.create(name: 'ENSAM')
+Lbg.create(name: 'ENSTA ParisTech')
+Lbg.create(name: 'Erlangen')
+Lbg.create(name: 'Gdansk')
+Lbg.create(name: 'Ghent')
+Lbg.create(name: 'Gliwice')
+Lbg.create(name: 'Gothenburg')
+Lbg.create(name: 'Graz')
+Lbg.create(name: 'Grenoble')
+Lbg.create(name: 'Helsinki')
+Lbg.create(name: 'Iasi')
+Lbg.create(name: 'Istanbul')
+Lbg.create(name: 'Istanbul Yildiz')
+Lbg.create(name: 'Izmir')
+Lbg.create(name: 'Kaunas')
+Lbg.create(name: 'Kiev')
+Lbg.create(name: 'Kosice')
+Lbg.create(name: 'Kraków')
+Lbg.create(name: 'Las Palmas')
+Lbg.create(name: 'Leuven')
+Lbg.create(name: 'Liege')
+Lbg.create(name: 'Lisbon')
+Lbg.create(name: 'Ljubljana')
+Lbg.create(name: 'Lodz')
+Lbg.create(name: 'Louvain-la-Neuve')
+Lbg.create(name: 'Lund')
+Lbg.create(name: 'Lviv')
+Lbg.create(name: 'Lyon')
+Lbg.create(name: 'Madrid')
+Lbg.create(name: 'Madrid Carlos III')
+Lbg.create(name: 'Maribor')
+Lbg.create(name: 'Messina')
+Lbg.create(name: 'Milan')
+Lbg.create(name: 'Moscow')
+Lbg.create(name: 'Mostar')
+Lbg.create(name: 'Nancy')
+Lbg.create(name: 'Naples')
+Lbg.create(name: 'Nis')
+Lbg.create(name: 'Novi Sad')
+Lbg.create(name: 'Paris Polytechnique')
+Lbg.create(name: 'Patras')
+Lbg.create(name: 'Podgorica')
+Lbg.create(name: 'Porto')
+Lbg.create(name: 'Prague')
+Lbg.create(name: 'Riga')
+Lbg.create(name: 'Rome')
+Lbg.create(name: 'Rome Tor Vergata')
+Lbg.create(name: 'Saint Petersburg')
+Lbg.create(name: 'Skopje')
+Lbg.create(name: 'Sofia')
+Lbg.create(name: 'Stockholm')
+Lbg.create(name: 'Supélec')
+Lbg.create(name: 'Tallinn')
+Lbg.create(name: 'Tampere')
+Lbg.create(name: 'Thessaloniki')
+Lbg.create(name: 'Timisoara')
+Lbg.create(name: 'Trento')
+Lbg.create(name: 'Trondheim')
+Lbg.create(name: 'Turin')
+Lbg.create(name: 'Uppsala')
+Lbg.create(name: 'Valencia')
+Lbg.create(name: 'Valladolid')
+Lbg.create(name: 'Veszprém')
+Lbg.create(name: 'Vienna')
+Lbg.create(name: 'Vinnytsia')
+Lbg.create(name: 'Warsaw')
+Lbg.create(name: 'Wroclaw')
+Lbg.create(name: 'Zagreb')
+Lbg.create(name: 'Zaporizhzhya')
 
 Announcement.delete_all
 Announcement.create(id: '1', user_id: '1', title: 'My first announcement',

@@ -18,13 +18,17 @@
     <% resource.each do |r| %>
       <tr>
         <% columns.each do |c| %>
+          <td>
           <% if collection == "contact" && subset == "email" && c == "content" %>
-            <td><%= mail_to r.send(c) %></td>
+            <%= mail_to r.send(c) %>
           <% elsif collection == "contact" && subset == "website" && c == "content" %>
-            <td><%= link_to r.send(c), r.send(c) %></td>
+            <%= link_to r.send(c), r.send(c) %>
+          <% elsif collection == "lbg" && c == "name"%>
+            <%= link_to r.send(c), lbg_path(r) %>
           <% else %>
-      	    <td><%= r.send(c) %></td>
+      	    <%= r.send(c) %>
       	  <% end %>
+      	  </td>
         <% end %>
         <td>
           <% if collection == "lbg" %>

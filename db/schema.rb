@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,176 +15,170 @@ ActiveRecord::Schema.define(version: 20150507115852) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "addresses", force: true do |t|
-    t.string   "street"
-    t.string   "number"
-    t.string   "zip"
-    t.string   "description"
-    t.integer  "user_id"
+  create_table "addresses", id: :serial, force: :cascade do |t|
+    t.string "street", limit: 255
+    t.string "number", limit: 255
+    t.string "zip", limit: 255
+    t.string "description", limit: 255
+    t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "country_id"
-    t.integer  "city_id"
+    t.string "country_id"
+    t.integer "city_id"
+    t.index ["city_id"], name: "index_addresses_on_city_id"
+    t.index ["country_id"], name: "index_addresses_on_country_id"
   end
 
-  add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
-  add_index "addresses", ["country_id"], name: "index_addresses_on_country_id", using: :btree
-
-  create_table "announcements", force: true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.string   "body"
+  create_table "announcements", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title", limit: 255
+    t.string "body", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "announcements_tags", id: false, force: true do |t|
+  create_table "announcements_tags", id: false, force: :cascade do |t|
     t.integer "announcement_id"
     t.integer "tag_id"
   end
 
-  create_table "categories", force: true do |t|
-    t.string "name"
+  create_table "categories", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
   end
 
-  create_table "cities", force: true do |t|
-    t.string   "name"
+  create_table "cities", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "comments", force: true do |t|
-    t.integer  "user_id"
-    t.string   "body"
-    t.integer  "announcement_id"
+  create_table "comments", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "body", limit: 255
+    t.integer "announcement_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "companies", force: true do |t|
-    t.string "name"
-    t.string "description"
-    t.string "category"
+  create_table "companies", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
+    t.string "description", limit: 255
+    t.string "category", limit: 255
   end
 
-  create_table "contacts", force: true do |t|
-    t.string   "content"
-    t.string   "description"
-    t.integer  "user_id"
+  create_table "contacts", id: :serial, force: :cascade do |t|
+    t.string "content", limit: 255
+    t.string "description", limit: 255
+    t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_contacts_on_category_id"
   end
 
-  add_index "contacts", ["category_id"], name: "index_contacts_on_category_id", using: :btree
-
-  create_table "educations", force: true do |t|
-    t.integer  "user_id"
-    t.string   "school"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.string   "field"
-    t.string   "grade"
-    t.string   "activities"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "experiences", force: true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "field_of_work"
-    t.string   "country_id"
-    t.integer  "city_id"
-    t.integer  "company_id"
-  end
-
-  add_index "experiences", ["city_id"], name: "index_experiences_on_city_id", using: :btree
-  add_index "experiences", ["company_id"], name: "index_experiences_on_company_id", using: :btree
-  add_index "experiences", ["country_id"], name: "index_experiences_on_country_id", using: :btree
-
-  create_table "interests", force: true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.integer  "initiator"
+  create_table "educations", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "school", limit: 255
+    t.date "start_date"
+    t.date "end_date"
+    t.string "field", limit: 255
+    t.string "grade", limit: 255
+    t.string "activities", limit: 255
+    t.string "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "interests_users", id: false, force: true do |t|
+  create_table "experiences", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title", limit: 255
+    t.date "start_date"
+    t.date "end_date"
+    t.string "description", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "field_of_work", limit: 255
+    t.string "country_id"
+    t.integer "city_id"
+    t.integer "company_id"
+    t.index ["city_id"], name: "index_experiences_on_city_id"
+    t.index ["company_id"], name: "index_experiences_on_company_id"
+    t.index ["country_id"], name: "index_experiences_on_country_id"
+  end
+
+  create_table "interests", id: :serial, force: :cascade do |t|
+    t.string "title", limit: 255
+    t.string "description", limit: 255
+    t.integer "initiator"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "interests_users", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "interest_id"
   end
 
-  create_table "languages", force: true do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.integer  "level"
+  create_table "languages", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name", limit: 255
+    t.integer "level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "lbgs", force: true do |t|
-    t.string   "name"
+  create_table "lbgs", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "lbgs_users", id: false, force: true do |t|
+  create_table "lbgs_users", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "lbg_id"
   end
 
-  create_table "taggings", force: true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context",       limit: 128
+  create_table "taggings", id: :serial, force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "taggable_id"
+    t.string "taggable_type", limit: 255
+    t.integer "tagger_id"
+    t.string "tagger_type", limit: 255
+    t.string "context", limit: 128
     t.datetime "created_at"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
-
-  create_table "tags", force: true do |t|
-    t.string  "name"
+  create_table "tags", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
     t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "surname"
-    t.string   "old_surname"
-    t.string   "nickname"
-    t.date     "birth_date"
-    t.integer  "gender"
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
+    t.string "surname", limit: 255
+    t.string "old_surname", limit: 255
+    t.string "nickname", limit: 255
+    t.date "birth_date"
+    t.integer "gender"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                    default: "", null: false
-    t.string   "encrypted_password",       default: "", null: false
-    t.string   "reset_password_token"
+    t.string "email", limit: 255, default: "", null: false
+    t.string "encrypted_password", limit: 255, default: "", null: false
+    t.string "reset_password_token", limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",            default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "uuid"
+    t.string "current_sign_in_ip", limit: 255
+    t.string "last_sign_in_ip", limit: 255
+    t.string "uuid", limit: 255
     t.datetime "visited_announcements_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

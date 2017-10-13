@@ -1,4 +1,4 @@
-class EditAddresses < ActiveRecord::Migration
+class EditAddresses < ActiveRecord::Migration[4.2]
   def change
     add_reference :addresses, :country, index: true
     add_reference :addresses, :city, index: true

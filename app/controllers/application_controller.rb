@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def count_announcements
     if current_user.present?
       unless current_user.visited_announcements_at.nil?
-        @announce_count = Announcement.find(:all, :conditions => ["created_at > ? ", current_user.visited_announcements_at]).count
+        @announce_count = Announcement.where("created_at > ? ", current_user.visited_announcements_at).count
       else
         @announce_count = Announcement.all.count
       end

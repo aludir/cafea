@@ -6,7 +6,7 @@
 		<%= e.text_field :end_date, class: 'form-control generic_date_picker', 'data-provider' => 'datepicker', placeholder: 'End date' %>
 		<%= e.text_field :field_of_work, class: 'form-control', placeholder: 'Field' %>
 		<%= e.text_field :city_id, class: 'form-control', placeholder: 'City', style: 'width: 20%' %>
-		<%= e.select(:country_id, options_for_select(Country.all), {class: 'form-control', placeholder: 'Country'}) %>
+		<%= e.text_field :country_id, class: 'form-control', placeholder: 'Country' %>
 		<%= e.text_field :description, class: 'form-control', placeholder: 'Description (e.g. internship)' %>
 		<button class='btn btn-danger cancel' type="button">Cancel</button>
 		<%= e.hidden_field :user_id, {value: current_user.id}%>

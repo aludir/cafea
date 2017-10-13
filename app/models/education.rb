@@ -1,3 +1,3 @@
-class Education < ActiveRecord::Base
+class Education < ApplicationRecord
   belongs_to :user
 end

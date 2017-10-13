@@ -79,6 +79,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 group :development do
+	gem 'listen'
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'

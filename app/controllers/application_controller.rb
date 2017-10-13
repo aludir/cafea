@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  
+
   def user_owns_resource?(resource)
     @resource = resource.find(params[:id])
     if !user_validation(@resource)
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-  
+
   def add_user_profile_resource(resource,params)
     @resource = resource.new(params)
     if !user_validation(@resource)
@@ -37,13 +37,13 @@ class ApplicationController < ActionController::Base
       redirect_to user_path(current_user.uuid)
     end
   end
-  
+
   def destroy_user_profile_resource(resource)
     resource.destroy
     flash[:notice]="You removed this "+resource.class.name+"!"
     redirect_to user_path(current_user.uuid)
   end
-  
+
   def user_validation(resource)
     resource.user == current_user
   end
@@ -56,12 +56,12 @@ class ApplicationController < ActionController::Base
       users_path
     end
   end
-  
+
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :birth_date, :name, :surname, :old_surname, :nickname, :gender) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password,
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :birth_date, :name, :surname, :old_surname, :nickname, :gender) }
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password,
       :birth_date, :name, :surname, :old_surname, :nickname, :gender) }
   end
 

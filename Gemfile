@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
-ruby "2.2.4"
+ruby "2.4.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+gem 'rails'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 #Use Device for user authentication
 gem 'devise'
@@ -24,7 +24,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
 # Datepicker form Bootstrap
-gem 'bootstrap-datepicker-rails' 
+gem 'bootstrap-datepicker-rails'
 
 # Using twitter's typeahead gem
 gem 'twitter-typeahead-rails'
@@ -36,10 +36,10 @@ gem 'rails_12factor'
 gem 'rails-erd'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 # User font-awesome https://github.com/bokmann/font-awesome-rails
 gem 'font-awesome-rails'
@@ -66,7 +66,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 
 gem 'pg_search'
 
@@ -79,7 +79,12 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 group :development do
+	gem 'listen'
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+end
+
+group :development, :test do
+	gem 'byebug'
 end

@@ -10,7 +10,7 @@
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="personal">  
+  <div class="tab-pane active" id="personal">
     Nickname: <%= @user.nickname %></br>
     Old_surname: <%= @user.old_surname %></br>
     Gender: <%= @gender_map[@user.gender] %></br>
@@ -32,7 +32,7 @@
 		</div>
 	<% end %>
   </div>
-  
+
   <div class="tab-pane" id='educations' >
   	<div class="row">
   		<h3>Education</h3>
@@ -60,7 +60,7 @@
 		</div>
 	<% end %>
   </div>
-  
+
   <div class="tab-pane" id='best_related'>
   	<div class="row">
   	  <%= render partial: 'user_details', locals: {collection: 'lbg', columns: ['name'],
@@ -75,23 +75,23 @@
 	  </div>
     <% end %>
   </div>
-  
+
   <div class="tab-pane" id="contact">
   	<div class="row">
   		<div class="col-md-4">
 		    <h3>E-mail</h3>
 		  	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'email', columns: ['content','description'],
-		  		headers: ['email','description'], resource: @user.contacts.find_all_by_category_id(1)} %>
+		  		headers: ['email','description'], resource: @user.contacts.where(category_id: 1)} %>
   		</div>
   		<div class="col-md-4">
 			<h3>Website</h3>
 			<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'website',  columns: ['content','description'],
-		  		headers: ['url','description'], resource: @user.contacts.find_all_by_category_id(3)} %>
+		  		headers: ['url','description'], resource: @user.contacts.where(category_id: 3)} %>
   		</div>
   		<div class="col-md-4">
   			<h3>Instant messaging</h3>
 		  	<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'skype',  columns: ['content','description'],
-		  		headers: ['id','description'], resource: @user.contacts.find_all_by_category_id(4)} %>
+		  		headers: ['id','description'], resource: @user.contacts.where(category_id: 4)} %>
   		</div>
 	</div>
 	<% if @user == current_user %>
@@ -111,7 +111,7 @@
 	    <div class="col-md-4">
 			<h3>Phones</h3>
 			<%= render partial: 'user_details', locals: {collection: 'contact', subset: 'phones',  columns: ['content','description'],
-	  			headers: ['number','description'], resource: @user.contacts.find_all_by_category_id(2)} %>
+	  			headers: ['number','description'], resource: @user.contacts.where(category_id: 2)} %>
 		</div>
     </div>
     <% if @user == current_user %>
@@ -134,7 +134,7 @@
     <ol>
 	<% @own_interests.each do |i| %>
       <li><%= link_to i.title, interest_path(i) %> with <%= i.users.count %> member(s)</li>
-	<% end %>    	
+	<% end %>
     </ol>
   </div>
 </div>
@@ -144,4 +144,3 @@
 	var companies = [<% Company.all.each do |c| %>"<%= c.name %>",<% end %>];
 	var languages = [<% Language.all.each do |l| %>"<%= l.name %>",<% end %>];
 </script>
-

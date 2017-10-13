@@ -4,7 +4,7 @@
 		<%= a.text_field :number, class: 'form-control', size: 1, placeholder: 'No.' %>
 		<%= a.text_field :city_id, class: 'form-control', placeholder: 'City', style: 'width: 20%' %>
 		<%= a.text_field :zip, class: 'form-control', size: 5, placeholder: 'Zip' %>
-		<%= a.select(:country_id, options_for_select(Country.all),{value: nil, class: 'form-control', placeholder: 'Country'}) %>
+		<%= a.text_field :country_id, class: 'form-control', placeholder: 'Country' %>
 		<%= a.text_field :description, class: 'form-control', size: 25, placeholder: 'Description (e.g. Home, Work etc.)' %>
 		<button class='btn btn-danger cancel' type="button">Cancel</button>
 		<%= a.hidden_field :user_id, {value: current_user.id}%>

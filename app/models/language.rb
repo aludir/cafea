@@ -1,3 +1,3 @@
-class Language < ActiveRecord::Base
+class Language < ApplicationRecord
   belongs_to :user
 end

@@ -1,4 +1,4 @@
-AluDir::Application.routes.draw do
+Rails.application.routes.draw do
   get "search/index"
   get "search/show"
   devise_for :users, controllers: {registrations: "users/registrations"}

@@ -1,29 +1,43 @@
-<h1>Listing members</h1>
-
-<table class="table table-hover table-striped table-responsive">
-  <thead>
-    <tr>
-      <th>Full name</th>
-      <th>Gender</th>
-      <th>Age</th>
-      <th>Countries</th>
-      <th>Field of work</th>
-      <th>Company</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.name + ' ' + user.surname, "/users/#{user.uuid}" %></td>
-        <td><%= user.gender %></td>
-        <td><%= user.age %></td>
-        <td><%= user.country %></td>
-        <td><%= user.field %></td>
-        <td><%= user.company %></td>
-      </tr>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2 search-bar">
+    <%= search_form_for @q do |f| %>
+      <div class="input-group">
+        <%= f.search_field :name_or_surname_cont, class: 'form-control', placeholder: 'Search for a bestie' %>
+        <%= f.submit "Search", name: 'nil' %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
+<div class="row">
+  <h1>Listing members</h1>
+</div>
+
+<div class="row">
+  <table class="table table-hover table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Full name</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Countries</th>
+        <th>Field of work</th>
+        <th>Company</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name + ' ' + user.surname, "/users/#{user.uuid}" %></td>
+          <td><%= user.gender %></td>
+          <td><%= user.age %></td>
+          <td><%= user.country %></td>
+          <td><%= user.field %></td>
+          <td><%= user.company %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

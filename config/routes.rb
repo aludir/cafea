@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get "search/index"
-  get "search/show"
   devise_for :users, controllers: {registrations: "users/registrations"}
-  
-  root "search#index"
+
+  root "users#index"
 
   resources :search, only: [:index, :show]
   resources :interests
@@ -16,7 +14,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :announcements
   get 'announcements?tag=:id', to: 'announcements#index', as: 'announcements_tag'
-  
+
   resources :tags, only: [:index]
   resources :contacts, except: [:index, :show]
   resources :addresses, except: [:index, :show]
@@ -24,7 +22,7 @@ Rails.application.routes.draw do
   resources :educations, except: [:index, :show]
   resources :experiences, except: [:index, :show]
   resources :lbgs, except: [:index, :show]
-    
+
   post 'comment', to: 'announcements#add_comment', as: 'add_comment'
   delete 'comment/:id', to: 'announcements#del_comment', as: 'del_comment'
 end

@@ -1,3 +1,23 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.avatar-circle {
+  width: 60px;
+  height: 60px;
+  background-color: #BADA55;
+  text-align: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  display: inline-block;
+}
+
+.initials {
+  position: relative;
+  top: 8px; /* 25% of parent */
+  font-size: 30px; /* 50% of parent */
+  line-height: 30px; /* 50% of parent */
+  color: #fff;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}

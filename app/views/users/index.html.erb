@@ -16,7 +16,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.name + ' ' + user.surname, "/users/#{user.uuid}" %></td>
-        <td><%= @gender_map[user.gender] %></td>
+        <td><%= user.gender %></td>
         <td><%= user.age %></td>
         <td><%= user.country %></td>
         <td><%= user.field %></td>

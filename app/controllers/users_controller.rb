@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    @gender_map = [nil, "Male","Female","Other"];
   end
 
   # GET /users/1
@@ -14,6 +13,5 @@ class UsersController < ApplicationController
     @user = current_user
     @interests = @user.interests
     @own_interests = Interest.where(initiator: @user.id)
-    @gender_map = [nil, "Male","Female","Other"];
   end
 end

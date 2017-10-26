@@ -1,4 +1,4 @@
-<h1 class="text-center">Profile of <%= @user.name %> <%= @user.surname %></h1>
+<h1 class="text-center"><%= show_avatar(@user) %> Profile of <%= @user.name %> <%= @user.surname %></h1>
 
 <ul class="nav nav-tabs" id="myTab">
   <li class="active"><a data-target="#personal" data-toggle="tab">Personal Info</a></li>

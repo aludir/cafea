@@ -1,15 +1,14 @@
 class LbgsController < ApplicationController
-  
+
   def index
     @lbgs = Lbg.all
   end
-  
+
   def show
     @lbg = Lbg.find(params[:id])
     @users = @lbg.users
-    @gender_map = [nil, "Male","Female","Other"];
   end
-  
+
   def join
     if is_member?
       flash[:alert]='You are already part of this LBG'
@@ -19,7 +18,7 @@ class LbgsController < ApplicationController
     end
     redirect_to user_path(current_user.uuid)
   end
-  
+
   def leave
     if is_member?
       flash[:notice]='You left this group'
@@ -29,7 +28,7 @@ class LbgsController < ApplicationController
     end
     redirect_to user_path(current_user.uuid)
   end
-    
+
   private
   def is_member?
     if params[:action] == "leave"
@@ -39,7 +38,7 @@ class LbgsController < ApplicationController
     end
     @lbg.users.exists?(current_user)
   end
-  
+
   def lbg_params
     params.require(:lbg).permit(:id, :name, :user_id)
   end

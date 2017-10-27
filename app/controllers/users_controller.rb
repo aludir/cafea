@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    @gender_map = [nil, "Male","Female","Other"];
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
   end
 
   # GET /users/1
@@ -14,6 +14,5 @@ class UsersController < ApplicationController
     @user = current_user
     @interests = @user.interests
     @own_interests = Interest.where(initiator: @user.id)
-    @gender_map = [nil, "Male","Female","Other"];
   end
 end

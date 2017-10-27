@@ -13,14 +13,14 @@
   <div class="tab-pane active" id="personal">
     Nickname: <%= @user.nickname %></br>
     Old_surname: <%= @user.old_surname %></br>
-    Gender: <%= @gender_map[@user.gender] %></br>
+    Gender: <%= @user.gender %></br>
     Birthdate: <%= @user.birth_date%></br>
     Joined on: <%= @user.created_at.strftime("%Y-%m-%d") %><br>
     <% if correct_user?(@user) %><%= link_to 'Edit', edit_user_registration_path, class: "btn btn-success" %><% end %>
   </div>
   <div class="tab-pane" id="professional">
   	<div class="row">
-  	<%= render partial: 'user_details', locals: {collection: 'experience', columns: ['company_name','title','country_name','start_date','end_date','field_of_work'],
+  	<%= render partial: 'user_details', locals: {collection: 'experience', columns: ['company_name','title','country_id','start_date','end_date','field_of_work'],
   		headers: ['company','title','country','started at','ended at','field of work'], resource: @user.experiences} %>
 	</div>
 	<% if @user == current_user %>

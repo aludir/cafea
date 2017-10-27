@@ -17,6 +17,8 @@ class User < ApplicationRecord
   validates :surname, presence: true
   validates :birth_date, presence: true
 
+  enum gender: ["Male","Female","Other"]
+
   def age
     (Date.today - self.birth_date).to_i / 365
   end

@@ -1,8 +1,0 @@
-<div class="col-sm-8 col-sm-offset-2 search-bar">
-  <%= form_tag(search_index_path, method: 'get', id: 'id_search') do %>
-    <div class="input-group">
-      <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for a bestie' %>
-      <%= submit_tag "Search", name: 'nil' %>
-    </div>
-  <% end %>
-</div>

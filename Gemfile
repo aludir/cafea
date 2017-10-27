@@ -68,7 +68,7 @@ gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 
-gem 'pg_search'
+gem 'ransack'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

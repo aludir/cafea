@@ -36,7 +36,7 @@ class LbgsController < ApplicationController
     else
       @lbg = Lbg.find(lbg_params[:id])
     end
-    @lbg.users.exists?(current_user)
+    @lbg.users.exists?(current_user.id)
   end
 
   def lbg_params

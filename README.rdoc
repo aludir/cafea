@@ -12,9 +12,9 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
-
+  - You can find further reference here: http://bit.ly/2gOBtNd
 * Database initialization
-
+  - You can find further reference here: http://bit.ly/2gOBtNd
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
